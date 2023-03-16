@@ -11,12 +11,18 @@ namespace SomerenUI
         public SomerenUI()
         {
             InitializeComponent();
+            pnlActivities.Visible = false;
+            pnlDashboard.Visible = false;
+            pnlLecturers.Visible = false;
+            pnlRooms.Visible = false;
+            pnlStudents.Visible = false;
         }
 
         private void ShowDashboardPanel()
         {
             // hide all other panels
             pnlStudents.Hide();
+            pnlLecturers.Hide();
 
             // show dashboard
             pnlDashboard.Show();
@@ -26,6 +32,7 @@ namespace SomerenUI
         {
             // hide all other panels
             pnlDashboard.Hide();
+            pnlLecturers.Hide();
 
             // show students
             pnlStudents.Show();
@@ -40,6 +47,19 @@ namespace SomerenUI
             {
                 MessageBox.Show("Something went wrong while loading the students: " + e.Message);
             }
+        }
+
+    // for Lecturers - Ignas
+        private void ShowLecturersPanel()
+        {
+            // hide all other panels
+            pnlDashboard.Hide();
+            pnlStudents.Hide();
+            pnlActivities.Hide();
+            pnlRooms.Hide();
+
+            // show lecturers
+            pnlLecturers.Visible = true;
         }
 
         private List<Student> GetStudents()
@@ -76,5 +96,35 @@ namespace SomerenUI
         {
             ShowStudentsPanel();
         }
+    // for Lecturers - Ignas
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowLecturersPanel();
+        }
+
+        // for Lecturers - Ignas
+        /*private List<Teacher> GetLecturers()
+        {
+            LecturerService lecturerService = new LecturerService();
+            List<Teacher> lecturers = lecturerService.GetLecturer();
+            return lecturers;
+        }*/
+
+        /*private void DisplayLecturers(List<Teacher> lecturers)
+        {
+            // clear the listview before filling it
+            listViewLecturers.Clear();
+
+            foreach (Teacher lecturer in lecturers)
+            {
+                ListViewItem li = new ListViewItem(lecturer.Id.ToString());
+                li.Tag = lecturer;   // link lecturer object to listview item
+                listViewLecturers.Items.Add(li);
+                li.SubItems.Add(lecturer.FirstName);
+                li.SubItems.Add(lecturer.LastName);
+                li.SubItems.Add(lecturer.TelephoneNumber);
+                li.SubItems.Add(lecturer.DateOfBirth.ToString());
+            }
+        }*/
     }
 }
