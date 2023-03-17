@@ -14,7 +14,7 @@ namespace SomerenDAL
 
         public List<Teacher> GetAllLecturers()
         {
-            string query = "SELECT * FROM dbo.lecturers";
+            string query = "SELECT [lecturer_ID], [first_name], [last_name], [date_of_birth], [telephone_number], [is_supervisor], [room_ID] FROM dbo.lecturers";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -32,6 +32,7 @@ namespace SomerenDAL
                     LastName = dr["last_name"].ToString(),
                     DateOfBirth = DateTime.Parse(dr["date_of_birth"].ToString()),
                     TelephoneNumber = dr["telephone_number"].ToString(),
+                    IsSupervisor = (bool)dr["is_supervisor"],
                     RoomID = (int)dr["room_ID"]
                 };
                 lecturers.Add(lecturer);

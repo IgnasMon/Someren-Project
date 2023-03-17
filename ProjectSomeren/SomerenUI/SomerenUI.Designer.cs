@@ -179,6 +179,7 @@
             this.listViewStudents.Size = new System.Drawing.Size(875, 408);
             this.listViewStudents.TabIndex = 1;
             this.listViewStudents.UseCompatibleStateImageBehavior = false;
+            this.listViewStudents.View = System.Windows.Forms.View.Details;
             // 
             // lblStudents
             // 
@@ -195,7 +196,7 @@
             this.pnlLecturers.Controls.Add(this.pictureBoxLecturers);
             this.pnlLecturers.Controls.Add(this.listViewLecturers);
             this.pnlLecturers.Controls.Add(this.lblLecturers);
-            this.pnlLecturers.Location = new System.Drawing.Point(9, 43);
+            this.pnlLecturers.Location = new System.Drawing.Point(11, 42);
             this.pnlLecturers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlLecturers.Name = "pnlLecturers";
             this.pnlLecturers.Size = new System.Drawing.Size(1072, 621);
@@ -206,7 +207,7 @@
             this.pnlActivities.Controls.Add(this.pictureBoxActivities);
             this.pnlActivities.Controls.Add(this.listViewActivities);
             this.pnlActivities.Controls.Add(this.lblActivities);
-            this.pnlActivities.Location = new System.Drawing.Point(6, 47);
+            this.pnlActivities.Location = new System.Drawing.Point(8, 51);
             this.pnlActivities.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlActivities.Name = "pnlActivities";
             this.pnlActivities.Size = new System.Drawing.Size(1072, 621);
@@ -217,7 +218,7 @@
             this.pnlRooms.Controls.Add(this.pictureBoxRooms);
             this.pnlRooms.Controls.Add(this.listViewRooms);
             this.pnlRooms.Controls.Add(this.lblRooms);
-            this.pnlRooms.Location = new System.Drawing.Point(3, 51);
+            this.pnlRooms.Location = new System.Drawing.Point(5, 60);
             this.pnlRooms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlRooms.Name = "pnlRooms";
             this.pnlRooms.Size = new System.Drawing.Size(1072, 621);
@@ -241,6 +242,7 @@
             this.listViewRooms.Size = new System.Drawing.Size(875, 408);
             this.listViewRooms.TabIndex = 1;
             this.listViewRooms.UseCompatibleStateImageBehavior = false;
+            this.listViewRooms.View = System.Windows.Forms.View.Details;
             // 
             // lblRooms
             // 
@@ -270,6 +272,7 @@
             this.listViewActivities.Size = new System.Drawing.Size(875, 408);
             this.listViewActivities.TabIndex = 1;
             this.listViewActivities.UseCompatibleStateImageBehavior = false;
+            this.listViewActivities.View = System.Windows.Forms.View.Details;
             // 
             // lblActivities
             // 
