@@ -26,7 +26,7 @@ namespace SomerenDAL
             {
                 Room room = new Room()
                 {
-                    room_ID = (int)dr["room_ID"],
+                    Id = (int)dr["room_ID"],
                     capacity = (int)dr["capacity"],
                     floor = (int)dr["floor"],
                     building = dr["building"].ToString(),
