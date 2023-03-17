@@ -11,12 +11,18 @@ namespace SomerenUI
         public SomerenUI()
         {
             InitializeComponent();
+            pnlActivities.Visible = false;
+            pnlDashboard.Visible = false;
+            pnlLecturers.Visible = false;
+            pnlRooms.Visible = false;
+            pnlStudents.Visible = false;
         }
 
         private void ShowDashboardPanel()
         {
             // hide all other panels
             pnlStudents.Hide();
+            pnlLecturers.Hide();
 
             // show dashboard
             pnlDashboard.Show();
@@ -26,6 +32,9 @@ namespace SomerenUI
         {
             // hide all other panels
             pnlDashboard.Hide();
+            pnlLecturers.Hide();
+            pnlActivities.Hide();
+            pnlRooms.Hide();
 
             // show students
             pnlStudents.Show();
@@ -54,10 +63,22 @@ namespace SomerenUI
             // clear the listview before filling it
             listViewStudents.Clear();
 
+            listViewStudents.Columns.Add("Student Id", 100);
+            listViewStudents.Columns.Add("Class", 60);
+            listViewStudents.Columns.Add("First Name", 120);
+            listViewStudents.Columns.Add("Last Name", 120);
+            listViewStudents.Columns.Add("Telephone Number", 160);
+            listViewStudents.Columns.Add("Room Id", 100);
+            
             foreach (Student student in students)
             {
-                ListViewItem li = new ListViewItem(student.Name);
+                ListViewItem li = new ListViewItem(student.StudentID.ToString());
                 li.Tag = student;   // link student object to listview item
+                li.SubItems.Add(student.Class.ToString());
+                li.SubItems.Add(student.FirstName.ToString());
+                li.SubItems.Add(student.LastName.ToString());
+                li.SubItems.Add(student.TelephoneNumber.ToString());
+                li.SubItems.Add(student.RoomID.ToString());
                 listViewStudents.Items.Add(li);
             }
         }
@@ -75,6 +96,65 @@ namespace SomerenUI
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowStudentsPanel();
+        }
+
+    // for Lecturers - Ignas
+        private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ShowLecturersPanel();
+        }
+
+        private void ShowLecturersPanel()
+        {
+            // hide all other panels
+            pnlDashboard.Hide();
+            pnlStudents.Hide();
+            pnlActivities.Hide();
+            pnlRooms.Hide();
+
+            // show lecturers
+            pnlLecturers.Show();
+
+            try
+            {
+                // get and display all lecturers
+                List<Teacher> lecturers = GetLecturers();
+                DisplayLecturers(lecturers);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the lecturers: " + e.Message);
+            }
+        }
+
+        private List<Teacher> GetLecturers()
+        {
+            LecturerService lecturerService = new LecturerService();
+            List<Teacher> lecturers = lecturerService.GetLecturers();
+            return lecturers;
+        }
+
+        private void DisplayLecturers(List<Teacher> lecturers)
+        {
+            // clear the listview before filling it
+            listViewLecturers.Clear();
+
+            listViewLecturers.Columns.Add("Lecturer Id", 100);
+            listViewLecturers.Columns.Add("Full Name", 160);
+            listViewLecturers.Columns.Add("Telephone Number", 160);
+            listViewLecturers.Columns.Add("Date of Birth", 160);
+            listViewLecturers.Columns.Add("Room Id", 100);
+
+            foreach (Teacher lecturer in lecturers)
+            {
+                ListViewItem lvi = new ListViewItem(lecturer.Id.ToString());
+                lvi.Tag = lecturer;   // link lecturer object to listview item
+                lvi.SubItems.Add(lecturer.FullName.ToString());
+                lvi.SubItems.Add(lecturer.TelephoneNumber.ToString());
+                lvi.SubItems.Add(lecturer.DateOfBirth.ToString());
+                lvi.SubItems.Add(lecturer.RoomID.ToString());
+                listViewLecturers.Items.Add(lvi);
+            }
         }
     }
 }
