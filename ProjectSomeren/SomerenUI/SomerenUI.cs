@@ -140,18 +140,22 @@ namespace SomerenUI
             listViewLecturers.Clear();
 
             listViewLecturers.Columns.Add("Lecturer Id", 100);
-            listViewLecturers.Columns.Add("Full Name", 160);
+            listViewLecturers.Columns.Add("First Name", 160);
+            listViewLecturers.Columns.Add("Last Name", 160);
             listViewLecturers.Columns.Add("Telephone Number", 160);
             listViewLecturers.Columns.Add("Date of Birth", 160);
+            listViewLecturers.Columns.Add("Supervisor", 100);
             listViewLecturers.Columns.Add("Room Id", 100);
 
             foreach (Teacher lecturer in lecturers)
             {
                 ListViewItem lvi = new ListViewItem(lecturer.Id.ToString());
                 lvi.Tag = lecturer;   // link lecturer object to listview item
-                lvi.SubItems.Add(lecturer.FullName.ToString());
+                lvi.SubItems.Add(lecturer.FirstName.ToString());
+                lvi.SubItems.Add(lecturer.LastName.ToString());
                 lvi.SubItems.Add(lecturer.TelephoneNumber.ToString());
                 lvi.SubItems.Add(lecturer.DateOfBirth.ToString());
+                lvi.SubItems.Add(lecturer.IsSupervisor.ToString());
                 lvi.SubItems.Add(lecturer.RoomID.ToString());
                 listViewLecturers.Items.Add(lvi);
             }
