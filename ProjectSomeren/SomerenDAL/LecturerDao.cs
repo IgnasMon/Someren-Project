@@ -12,27 +12,31 @@ namespace SomerenDAL
     public class LecturerDao : BaseDao
     {
 
-        /*public List<Student> GetAllStudents()
+        public List<Teacher> GetAllLecturers()
         {
             string query = "SELECT * FROM dbo.lecturers";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        }*/
+        }
 
-        /*private List<Student> ReadTables(DataTable dataTable)
+        private List<Teacher> ReadTables(DataTable dataTable)
         {
-            List<Teacher> lecturer = new List<Student>();
+            List<Teacher> lecturers = new List<Teacher>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Student student = new Student()
+                Teacher lecturer = new Teacher()
                 {
-                    Number = (int)dr["StudentId"],
-                    Name = dr["Name"].ToString()
+                    Id = (int)dr["lecturer_ID"],
+                    FirstName = dr["first_name"].ToString(),
+                    LastName = dr["last_name"].ToString(),
+                    DateOfBirth = DateTime.Parse(dr["date_of_birth"].ToString()),
+                    TelephoneNumber = dr["telephone_number"].ToString(),
+                    RoomID = (int)dr["room_ID"]
                 };
-                students.Add(student);
+                lecturers.Add(lecturer);
             }
-            return students;
-        }*/
+            return lecturers;
+        }
     }
 }

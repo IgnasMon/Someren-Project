@@ -49,19 +49,6 @@ namespace SomerenUI
             }
         }
 
-    // for Lecturers - Ignas
-        private void ShowLecturersPanel()
-        {
-            // hide all other panels
-            pnlDashboard.Hide();
-            pnlStudents.Hide();
-            pnlActivities.Hide();
-            pnlRooms.Hide();
-
-            // show lecturers
-            pnlLecturers.Visible = true;
-        }
-
         private List<Student> GetStudents()
         {
             StudentService studentService = new StudentService();
@@ -96,35 +83,65 @@ namespace SomerenUI
         {
             ShowStudentsPanel();
         }
+
     // for Lecturers - Ignas
-        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowLecturersPanel();
         }
 
-        // for Lecturers - Ignas
-        /*private List<Teacher> GetLecturers()
+        private void ShowLecturersPanel()
+        {
+            // hide all other panels
+            pnlDashboard.Hide();
+            pnlStudents.Hide();
+            pnlActivities.Hide();
+            pnlRooms.Hide();
+
+            // show lecturers
+            pnlLecturers.Show();
+
+            try
+            {
+                // get and display all lecturers
+                List<Teacher> lecturers = GetLecturers();
+                DisplayLecturers(lecturers);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the lecturers: " + e.Message);
+            }
+        }
+
+        private List<Teacher> GetLecturers()
         {
             LecturerService lecturerService = new LecturerService();
-            List<Teacher> lecturers = lecturerService.GetLecturer();
+            List<Teacher> lecturers = lecturerService.GetLecturers();
             return lecturers;
-        }*/
+        }
 
-        /*private void DisplayLecturers(List<Teacher> lecturers)
+        private void DisplayLecturers(List<Teacher> lecturers)
         {
             // clear the listview before filling it
             listViewLecturers.Clear();
 
+            listViewLecturers.Columns.Add("Lecturer Id", 100);
+            listViewLecturers.Columns.Add("Full Name", 160);
+            listViewLecturers.Columns.Add("Telephone Number", 160);
+            listViewLecturers.Columns.Add("Date of Birth", 160);
+            listViewLecturers.Columns.Add("Room Id", 100);
+
             foreach (Teacher lecturer in lecturers)
             {
-                ListViewItem li = new ListViewItem(lecturer.Id.ToString());
-                li.Tag = lecturer;   // link lecturer object to listview item
-                listViewLecturers.Items.Add(li);
-                li.SubItems.Add(lecturer.FirstName);
-                li.SubItems.Add(lecturer.LastName);
-                li.SubItems.Add(lecturer.TelephoneNumber);
-                li.SubItems.Add(lecturer.DateOfBirth.ToString());
+                ListViewItem lvi = new ListViewItem(lecturer.Id.ToString());
+                lvi.Tag = lecturer;   // link lecturer object to listview item
+                lvi.SubItems.Add(lecturer.FullName.ToString());
+                lvi.SubItems.Add(lecturer.TelephoneNumber.ToString());
+                lvi.SubItems.Add(lecturer.DateOfBirth.ToString());
+                lvi.SubItems.Add(lecturer.RoomID.ToString());
+                listViewLecturers.Items.Add(lvi);
             }
-        }*/
+        }
+
     }
 }
