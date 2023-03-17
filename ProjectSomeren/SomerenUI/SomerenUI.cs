@@ -49,19 +49,6 @@ namespace SomerenUI
             }
         }
 
-    // for Lecturers - Ignas
-        private void ShowLecturersPanel()
-        {
-            // hide all other panels
-            pnlDashboard.Hide();
-            pnlStudents.Hide();
-            pnlActivities.Hide();
-            pnlRooms.Hide();
-
-            // show lecturers
-            pnlLecturers.Visible = true;
-        }
-
         private List<Student> GetStudents()
         {
             StudentService studentService = new StudentService();
@@ -96,10 +83,23 @@ namespace SomerenUI
         {
             ShowStudentsPanel();
         }
+
     // for Lecturers - Ignas
-        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowLecturersPanel();
+        }
+
+        private void ShowLecturersPanel()
+        {
+            // hide all other panels
+            pnlDashboard.Hide();
+            pnlStudents.Hide();
+            pnlActivities.Hide();
+            pnlRooms.Hide();
+
+            // show lecturers
+            pnlLecturers.Show();
         }
 
         // for Lecturers - Ignas
