@@ -33,6 +33,8 @@ namespace SomerenUI
             // hide all other panels
             pnlDashboard.Hide();
             pnlLecturers.Hide();
+            pnlActivities.Hide();
+            pnlRooms.Hide();
 
             // show students
             pnlStudents.Show();
@@ -61,10 +63,22 @@ namespace SomerenUI
             // clear the listview before filling it
             listViewStudents.Clear();
 
+            listViewStudents.Columns.Add("Student Id", 100);
+            listViewStudents.Columns.Add("Class", 60);
+            listViewStudents.Columns.Add("First Name", 120);
+            listViewStudents.Columns.Add("Last Name", 120);
+            listViewStudents.Columns.Add("Telephone Number", 160);
+            listViewStudents.Columns.Add("Room Id", 100);
+            
             foreach (Student student in students)
             {
-                ListViewItem li = new ListViewItem(student.Name);
+                ListViewItem li = new ListViewItem(student.StudentID.ToString());
                 li.Tag = student;   // link student object to listview item
+                li.SubItems.Add(student.Class.ToString());
+                li.SubItems.Add(student.FirstName.ToString());
+                li.SubItems.Add(student.LastName.ToString());
+                li.SubItems.Add(student.TelephoneNumber.ToString());
+                li.SubItems.Add(student.RoomID.ToString());
                 listViewStudents.Items.Add(li);
             }
         }
@@ -146,6 +160,5 @@ namespace SomerenUI
                 listViewLecturers.Items.Add(lvi);
             }
         }
-
     }
 }
