@@ -23,6 +23,8 @@ namespace SomerenUI
             // hide all other panels
             pnlStudents.Hide();
             pnlLecturers.Hide();
+            pnlActivities.Hide();
+            pnlRooms.Hide();
 
             // show dashboard
             pnlDashboard.Show();
@@ -160,6 +162,7 @@ namespace SomerenUI
                 listViewLecturers.Items.Add(lvi);
             }
         }
+    // Lecturer - END
 
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -216,6 +219,11 @@ namespace SomerenUI
                 rvi.SubItems.Add(room.building.ToString());
                 listViewRooms.Items.Add(rvi);
             }
+        }
+
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
