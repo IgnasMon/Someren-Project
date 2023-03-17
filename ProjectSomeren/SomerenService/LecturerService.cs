@@ -16,11 +16,11 @@ namespace SomerenService
         {
             lecturerdb = new LecturerDao();
         }
-/*
-        public List<Student> GetLecturers()
+
+        public List<Teacher> GetLecturers()
         {
             List<Teacher> lecturers = lecturerdb.GetAllLecturers();
             return lecturers;
-        }*/
+        }
     }
 }
