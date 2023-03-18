@@ -17,7 +17,7 @@ namespace SomerenService
             activitydb = new ActivityDao();
         }
 
-        public List<Activity> GetStudents()
+        public List<Activity> GetActivities()
         {
             List<Activity> activity = activitydb.GetAllActivity();
             return activity;
