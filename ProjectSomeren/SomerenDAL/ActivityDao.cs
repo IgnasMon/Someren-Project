@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SomerenModel;
+using SomerenDAL;
 
 namespace SomerenDAL
 {
@@ -37,5 +38,6 @@ namespace SomerenDAL
             return activities;
         }
     }
-}
+}          
+
 
