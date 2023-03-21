@@ -12,8 +12,6 @@ namespace SomerenUI
         {
             InitializeComponent();
             pnlActivities.Visible = false;
-            pnlDashboard.Visible = false;
-            pnlLecturers.Visible = false;
             pnlRooms.Visible = false;
             pnlStudents.Visible = false;
         }
@@ -22,7 +20,6 @@ namespace SomerenUI
         {
             // hide all other panels
             pnlStudents.Hide();
-            pnlLecturers.Hide();
             pnlActivities.Hide();
             pnlRooms.Hide();
 
@@ -30,11 +27,11 @@ namespace SomerenUI
             pnlDashboard.Show();
         }
 
+    // Students - Zoran
         private void ShowStudentsPanel()
         {
             // hide all other panels
             pnlDashboard.Hide();
-            pnlLecturers.Hide();
             pnlActivities.Hide();
             pnlRooms.Hide();
 
@@ -99,71 +96,17 @@ namespace SomerenUI
         {
             ShowStudentsPanel();
         }
+    // Students - END
 
-    // for Lecturers - Ignas
+    // Lecturers - Ignas
         private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ShowLecturersPanel();
+            LecturerUI lecturerUI = new LecturerUI();
+            lecturerUI.ShowDialog();
         }
+    // Lecturer - END*/
 
-        private void ShowLecturersPanel()
-        {
-            // hide all other panels
-            pnlDashboard.Hide();
-            pnlStudents.Hide();
-            pnlActivities.Hide();
-            pnlRooms.Hide();
-
-            // show lecturers
-            pnlLecturers.Show();
-
-            try
-            {
-                // get and display all lecturers
-                List<Teacher> lecturers = GetLecturers();
-                DisplayLecturers(lecturers);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Something went wrong while loading the lecturers: " + e.Message);
-            }
-        }
-
-        private List<Teacher> GetLecturers()
-        {
-            LecturerService lecturerService = new LecturerService();
-            List<Teacher> lecturers = lecturerService.GetLecturers();
-            return lecturers;
-        }
-
-        private void DisplayLecturers(List<Teacher> lecturers)
-        {
-            // clear the listview before filling it
-            listViewLecturers.Clear();
-
-            listViewLecturers.Columns.Add("Lecturer Id", 100);
-            listViewLecturers.Columns.Add("First Name", 160);
-            listViewLecturers.Columns.Add("Last Name", 160);
-            listViewLecturers.Columns.Add("Telephone Number", 160);
-            listViewLecturers.Columns.Add("Date of Birth", 160);
-            listViewLecturers.Columns.Add("Supervisor", 100);
-            listViewLecturers.Columns.Add("Room Id", 100);
-
-            foreach (Teacher lecturer in lecturers)
-            {
-                ListViewItem lvi = new ListViewItem(lecturer.Id.ToString());
-                lvi.Tag = lecturer;   // link lecturer object to listview item
-                lvi.SubItems.Add(lecturer.FirstName.ToString());
-                lvi.SubItems.Add(lecturer.LastName.ToString());
-                lvi.SubItems.Add(lecturer.TelephoneNumber.ToString());
-                lvi.SubItems.Add(lecturer.DateOfBirth.ToString());
-                lvi.SubItems.Add(lecturer.IsSupervisor.ToString());
-                lvi.SubItems.Add(lecturer.RoomID.ToString());
-                listViewLecturers.Items.Add(lvi);
-            }
-        }
-    // Lecturer - END
-
+    // Rooms - Saif
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowRoomsPanel();
@@ -175,7 +118,6 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlStudents.Hide();
             pnlActivities.Hide();
-            pnlLecturers.Hide();
 
             // show lecturers
             pnlRooms.Show();
@@ -220,7 +162,9 @@ namespace SomerenUI
                 listViewRooms.Items.Add(rvi);
             }
         }
+    // Rooms - END
 
+    // Activity - Sagy
         private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowActivitiesPanel();
@@ -230,7 +174,6 @@ namespace SomerenUI
             // hide all other panels
             pnlDashboard.Hide();
             pnlStudents.Hide();
-            pnlLecturers.Hide();
             pnlRooms.Hide();
 
             // show activities
@@ -278,6 +221,6 @@ namespace SomerenUI
                 listViewActivities.Items.Add(lvi);
             }
         }
-        // Lecturer - END
+    // Activity - END
     }
 }
