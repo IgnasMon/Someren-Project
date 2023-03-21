@@ -13,7 +13,8 @@ namespace SomerenDAL
         public BaseDao()
         {
             // DO NOT FORGET TO INSERT YOUR CONNECTION STRING NAMED 'SOMEREN DATABASE' IN YOUR APP.CONFIG!!
-
+            
+            // Ignas - I connected the Server to the Projects
             conn = new SqlConnection(
                                     ConfigurationManager
                                     .ConnectionStrings["connectionDatabaseString"]
