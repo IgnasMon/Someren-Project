@@ -14,7 +14,8 @@ namespace SomerenDAL
 
         public List<Teacher> GetAllLecturers()
         {
-            string query = "SELECT [lecturer_ID], [first_name], [last_name], [date_of_birth], [telephone_number], [is_supervisor], [room_ID] FROM dbo.lecturers";
+            string query = "SELECT [lecturer_ID], [first_name], [last_name], [date_of_birth], [telephone_number], [is_supervisor], [room_ID] " +
+                            "FROM dbo.lecturers";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }

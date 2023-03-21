@@ -43,10 +43,6 @@
             this.pictureBoxStudents = new System.Windows.Forms.PictureBox();
             this.listViewStudents = new System.Windows.Forms.ListView();
             this.lblStudents = new System.Windows.Forms.Label();
-            this.pnlLecturers = new System.Windows.Forms.Panel();
-            this.pictureBoxLecturers = new System.Windows.Forms.PictureBox();
-            this.listViewLecturers = new System.Windows.Forms.ListView();
-            this.lblLecturers = new System.Windows.Forms.Label();
             this.pnlActivities = new System.Windows.Forms.Panel();
             this.pictureBoxActivities = new System.Windows.Forms.PictureBox();
             this.listViewActivities = new System.Windows.Forms.ListView();
@@ -59,8 +55,6 @@
             this.pnlDashboard.SuspendLayout();
             this.pnlStudents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStudents)).BeginInit();
-            this.pnlLecturers.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLecturers)).BeginInit();
             this.pnlActivities.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActivities)).BeginInit();
             this.pnlRooms.SuspendLayout();
@@ -78,7 +72,8 @@
             this.roomsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(962, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1099, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -88,64 +83,66 @@
             this.dashboardToolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
             this.dashboardToolStripMenuItem.Text = "Application";
             // 
             // dashboardToolStripMenuItem1
             // 
             this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(165, 26);
             this.dashboardToolStripMenuItem1.Text = "Dashboard";
             this.dashboardToolStripMenuItem1.Click += new System.EventHandler(this.dashboardToolStripMenuItem1_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
             this.studentsToolStripMenuItem.Text = "Students";
             this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
             // 
             // lecturersToolStripMenuItem
             // 
             this.lecturersToolStripMenuItem.Name = "lecturersToolStripMenuItem";
-            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.lecturersToolStripMenuItem.Text = "Lecturers";
             this.lecturersToolStripMenuItem.Click += new System.EventHandler(this.lecturersToolStripMenuItem_Click_1);
             // 
             // activitiesToolStripMenuItem
             // 
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
-            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.activitiesToolStripMenuItem.Text = "Activities";
+            this.activitiesToolStripMenuItem.Click += new System.EventHandler(this.activitiesToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
             // pnlDashboard
             // 
             this.pnlDashboard.Controls.Add(this.lblDashboard);
-            this.pnlDashboard.Location = new System.Drawing.Point(12, 27);
+            this.pnlDashboard.Location = new System.Drawing.Point(14, 36);
+            this.pnlDashboard.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.Size = new System.Drawing.Size(938, 466);
+            this.pnlDashboard.Size = new System.Drawing.Size(1072, 621);
             this.pnlDashboard.TabIndex = 1;
             // 
             // lblDashboard
             // 
             this.lblDashboard.AutoSize = true;
-            this.lblDashboard.Location = new System.Drawing.Point(13, 13);
+            this.lblDashboard.Location = new System.Drawing.Point(15, 17);
             this.lblDashboard.Name = "lblDashboard";
-            this.lblDashboard.Size = new System.Drawing.Size(208, 15);
+            this.lblDashboard.Size = new System.Drawing.Size(262, 20);
             this.lblDashboard.TabIndex = 0;
             this.lblDashboard.Text = "Welcome to the Someren Application!";
             // 
@@ -154,25 +151,28 @@
             this.pnlStudents.Controls.Add(this.pictureBoxStudents);
             this.pnlStudents.Controls.Add(this.listViewStudents);
             this.pnlStudents.Controls.Add(this.lblStudents);
-            this.pnlStudents.Location = new System.Drawing.Point(10, 29);
+            this.pnlStudents.Location = new System.Drawing.Point(11, 39);
+            this.pnlStudents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlStudents.Name = "pnlStudents";
-            this.pnlStudents.Size = new System.Drawing.Size(938, 466);
+            this.pnlStudents.Size = new System.Drawing.Size(1072, 621);
             this.pnlStudents.TabIndex = 2;
             // 
             // pictureBoxStudents
             // 
             this.pictureBoxStudents.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxStudents.Image")));
-            this.pictureBoxStudents.Location = new System.Drawing.Point(805, 0);
+            this.pictureBoxStudents.Location = new System.Drawing.Point(920, 0);
+            this.pictureBoxStudents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxStudents.Name = "pictureBoxStudents";
-            this.pictureBoxStudents.Size = new System.Drawing.Size(130, 123);
+            this.pictureBoxStudents.Size = new System.Drawing.Size(149, 164);
             this.pictureBoxStudents.TabIndex = 2;
             this.pictureBoxStudents.TabStop = false;
             // 
             // listViewStudents
             // 
-            this.listViewStudents.Location = new System.Drawing.Point(16, 42);
+            this.listViewStudents.Location = new System.Drawing.Point(18, 56);
+            this.listViewStudents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listViewStudents.Name = "listViewStudents";
-            this.listViewStudents.Size = new System.Drawing.Size(766, 307);
+            this.listViewStudents.Size = new System.Drawing.Size(875, 408);
             this.listViewStudents.TabIndex = 1;
             this.listViewStudents.UseCompatibleStateImageBehavior = false;
             this.listViewStudents.View = System.Windows.Forms.View.Details;
@@ -181,75 +181,39 @@
             // 
             this.lblStudents.AutoSize = true;
             this.lblStudents.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblStudents.Location = new System.Drawing.Point(13, 7);
+            this.lblStudents.Location = new System.Drawing.Point(15, 9);
             this.lblStudents.Name = "lblStudents";
-            this.lblStudents.Size = new System.Drawing.Size(107, 32);
+            this.lblStudents.Size = new System.Drawing.Size(134, 41);
             this.lblStudents.TabIndex = 0;
             this.lblStudents.Text = "Students";
-            // 
-            // pnlLecturers
-            // 
-            this.pnlLecturers.Controls.Add(this.pictureBoxLecturers);
-            this.pnlLecturers.Controls.Add(this.listViewLecturers);
-            this.pnlLecturers.Controls.Add(this.lblLecturers);
-            this.pnlLecturers.Location = new System.Drawing.Point(10, 32);
-            this.pnlLecturers.Name = "pnlLecturers";
-            this.pnlLecturers.Size = new System.Drawing.Size(938, 466);
-            this.pnlLecturers.TabIndex = 3;
-            // 
-            // pictureBoxLecturers
-            // 
-            this.pictureBoxLecturers.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLecturers.Image")));
-            this.pictureBoxLecturers.Location = new System.Drawing.Point(805, 0);
-            this.pictureBoxLecturers.Name = "pictureBoxLecturers";
-            this.pictureBoxLecturers.Size = new System.Drawing.Size(130, 123);
-            this.pictureBoxLecturers.TabIndex = 2;
-            this.pictureBoxLecturers.TabStop = false;
-            // 
-            // listViewLecturers
-            // 
-            this.listViewLecturers.Location = new System.Drawing.Point(16, 42);
-            this.listViewLecturers.MultiSelect = false;
-            this.listViewLecturers.Name = "listViewLecturers";
-            this.listViewLecturers.Size = new System.Drawing.Size(766, 307);
-            this.listViewLecturers.TabIndex = 1;
-            this.listViewLecturers.UseCompatibleStateImageBehavior = false;
-            this.listViewLecturers.View = System.Windows.Forms.View.Details;
-            // 
-            // lblLecturers
-            // 
-            this.lblLecturers.AutoSize = true;
-            this.lblLecturers.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblLecturers.Location = new System.Drawing.Point(13, 7);
-            this.lblLecturers.Name = "lblLecturers";
-            this.lblLecturers.Size = new System.Drawing.Size(110, 32);
-            this.lblLecturers.TabIndex = 0;
-            this.lblLecturers.Text = "Lecturers";
             // 
             // pnlActivities
             // 
             this.pnlActivities.Controls.Add(this.pictureBoxActivities);
             this.pnlActivities.Controls.Add(this.listViewActivities);
             this.pnlActivities.Controls.Add(this.lblActivities);
-            this.pnlActivities.Location = new System.Drawing.Point(7, 38);
+            this.pnlActivities.Location = new System.Drawing.Point(8, 51);
+            this.pnlActivities.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlActivities.Name = "pnlActivities";
-            this.pnlActivities.Size = new System.Drawing.Size(938, 466);
+            this.pnlActivities.Size = new System.Drawing.Size(1072, 621);
             this.pnlActivities.TabIndex = 4;
             // 
             // pictureBoxActivities
             // 
             this.pictureBoxActivities.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxActivities.Image")));
-            this.pictureBoxActivities.Location = new System.Drawing.Point(805, 0);
+            this.pictureBoxActivities.Location = new System.Drawing.Point(920, 0);
+            this.pictureBoxActivities.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxActivities.Name = "pictureBoxActivities";
-            this.pictureBoxActivities.Size = new System.Drawing.Size(130, 123);
+            this.pictureBoxActivities.Size = new System.Drawing.Size(149, 164);
             this.pictureBoxActivities.TabIndex = 2;
             this.pictureBoxActivities.TabStop = false;
             // 
             // listViewActivities
             // 
-            this.listViewActivities.Location = new System.Drawing.Point(16, 42);
+            this.listViewActivities.Location = new System.Drawing.Point(18, 56);
+            this.listViewActivities.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listViewActivities.Name = "listViewActivities";
-            this.listViewActivities.Size = new System.Drawing.Size(766, 307);
+            this.listViewActivities.Size = new System.Drawing.Size(875, 408);
             this.listViewActivities.TabIndex = 1;
             this.listViewActivities.UseCompatibleStateImageBehavior = false;
             this.listViewActivities.View = System.Windows.Forms.View.Details;
@@ -258,9 +222,9 @@
             // 
             this.lblActivities.AutoSize = true;
             this.lblActivities.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblActivities.Location = new System.Drawing.Point(13, 7);
+            this.lblActivities.Location = new System.Drawing.Point(15, 9);
             this.lblActivities.Name = "lblActivities";
-            this.lblActivities.Size = new System.Drawing.Size(109, 32);
+            this.lblActivities.Size = new System.Drawing.Size(135, 41);
             this.lblActivities.TabIndex = 0;
             this.lblActivities.Text = "Activities";
             // 
@@ -269,25 +233,28 @@
             this.pnlRooms.Controls.Add(this.pictureBoxRooms);
             this.pnlRooms.Controls.Add(this.listViewRooms);
             this.pnlRooms.Controls.Add(this.lblRooms);
-            this.pnlRooms.Location = new System.Drawing.Point(4, 45);
+            this.pnlRooms.Location = new System.Drawing.Point(5, 60);
+            this.pnlRooms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlRooms.Name = "pnlRooms";
-            this.pnlRooms.Size = new System.Drawing.Size(938, 466);
+            this.pnlRooms.Size = new System.Drawing.Size(1072, 621);
             this.pnlRooms.TabIndex = 5;
             // 
             // pictureBoxRooms
             // 
             this.pictureBoxRooms.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRooms.Image")));
-            this.pictureBoxRooms.Location = new System.Drawing.Point(805, 0);
+            this.pictureBoxRooms.Location = new System.Drawing.Point(920, 0);
+            this.pictureBoxRooms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxRooms.Name = "pictureBoxRooms";
-            this.pictureBoxRooms.Size = new System.Drawing.Size(130, 123);
+            this.pictureBoxRooms.Size = new System.Drawing.Size(149, 164);
             this.pictureBoxRooms.TabIndex = 2;
             this.pictureBoxRooms.TabStop = false;
             // 
             // listViewRooms
             // 
-            this.listViewRooms.Location = new System.Drawing.Point(16, 42);
+            this.listViewRooms.Location = new System.Drawing.Point(18, 56);
+            this.listViewRooms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listViewRooms.Name = "listViewRooms";
-            this.listViewRooms.Size = new System.Drawing.Size(766, 307);
+            this.listViewRooms.Size = new System.Drawing.Size(875, 408);
             this.listViewRooms.TabIndex = 1;
             this.listViewRooms.UseCompatibleStateImageBehavior = false;
             this.listViewRooms.View = System.Windows.Forms.View.Details;
@@ -296,24 +263,24 @@
             // 
             this.lblRooms.AutoSize = true;
             this.lblRooms.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblRooms.Location = new System.Drawing.Point(13, 7);
+            this.lblRooms.Location = new System.Drawing.Point(15, 9);
             this.lblRooms.Name = "lblRooms";
-            this.lblRooms.Size = new System.Drawing.Size(86, 32);
+            this.lblRooms.Size = new System.Drawing.Size(110, 41);
             this.lblRooms.TabIndex = 0;
             this.lblRooms.Text = "Rooms";
             // 
             // SomerenUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 505);
+            this.ClientSize = new System.Drawing.Size(1099, 673);
             this.Controls.Add(this.pnlRooms);
             this.Controls.Add(this.pnlActivities);
-            this.Controls.Add(this.pnlLecturers);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlDashboard);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SomerenUI";
             this.Text = "SomerenApp";
             this.menuStrip1.ResumeLayout(false);
@@ -323,9 +290,6 @@
             this.pnlStudents.ResumeLayout(false);
             this.pnlStudents.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStudents)).EndInit();
-            this.pnlLecturers.ResumeLayout(false);
-            this.pnlLecturers.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLecturers)).EndInit();
             this.pnlActivities.ResumeLayout(false);
             this.pnlActivities.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActivities)).EndInit();
@@ -361,18 +325,5 @@
         private System.Windows.Forms.PictureBox pictureBoxActivities;
         private System.Windows.Forms.ListView listViewActivities;
         private System.Windows.Forms.Label lblActivities;
-
-    // Lecturer
-        private System.Windows.Forms.Panel pnlLecturers;
-        private System.Windows.Forms.Label lblLecturers;
-        private System.Windows.Forms.PictureBox pictureBoxLecturers;
-        //ListView
-        private System.Windows.Forms.ListView listViewLecturers;
-        private System.Windows.Forms.ColumnHeader lecturer_ID;
-        private System.Windows.Forms.ColumnHeader first_name;
-        private System.Windows.Forms.ColumnHeader last_name;
-        private System.Windows.Forms.ColumnHeader date_of_birth;
-        private System.Windows.Forms.ColumnHeader telephone_number;
-        private System.Windows.Forms.ColumnHeader room_ID;
     }
 }

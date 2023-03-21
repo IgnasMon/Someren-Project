@@ -12,8 +12,6 @@ namespace SomerenUI
         {
             InitializeComponent();
             pnlActivities.Visible = false;
-            pnlDashboard.Visible = false;
-            pnlLecturers.Visible = false;
             pnlRooms.Visible = false;
             pnlStudents.Visible = false;
         }
@@ -22,17 +20,18 @@ namespace SomerenUI
         {
             // hide all other panels
             pnlStudents.Hide();
-            pnlLecturers.Hide();
+            pnlActivities.Hide();
+            pnlRooms.Hide();
 
             // show dashboard
             pnlDashboard.Show();
         }
 
+    // Students - Zoran
         private void ShowStudentsPanel()
         {
             // hide all other panels
             pnlDashboard.Hide();
-            pnlLecturers.Hide();
             pnlActivities.Hide();
             pnlRooms.Hide();
 
@@ -97,66 +96,17 @@ namespace SomerenUI
         {
             ShowStudentsPanel();
         }
+    // Students - END
 
-    // for Lecturers - Ignas
+    // Lecturers - Ignas
         private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ShowLecturersPanel();
+            LecturerUI lecturerUI = new LecturerUI();
+            lecturerUI.ShowDialog();
         }
+    // Lecturer - END*/
 
-        private void ShowLecturersPanel()
-        {
-            // hide all other panels
-            pnlDashboard.Hide();
-            pnlStudents.Hide();
-            pnlActivities.Hide();
-            pnlRooms.Hide();
-
-            // show lecturers
-            pnlLecturers.Show();
-
-            try
-            {
-                // get and display all lecturers
-                List<Teacher> lecturers = GetLecturers();
-                DisplayLecturers(lecturers);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Something went wrong while loading the lecturers: " + e.Message);
-            }
-        }
-
-        private List<Teacher> GetLecturers()
-        {
-            LecturerService lecturerService = new LecturerService();
-            List<Teacher> lecturers = lecturerService.GetLecturers();
-            return lecturers;
-        }
-
-        private void DisplayLecturers(List<Teacher> lecturers)
-        {
-            // clear the listview before filling it
-            listViewLecturers.Clear();
-
-            listViewLecturers.Columns.Add("Lecturer Id", 100);
-            listViewLecturers.Columns.Add("Full Name", 160);
-            listViewLecturers.Columns.Add("Telephone Number", 160);
-            listViewLecturers.Columns.Add("Date of Birth", 160);
-            listViewLecturers.Columns.Add("Room Id", 100);
-
-            foreach (Teacher lecturer in lecturers)
-            {
-                ListViewItem lvi = new ListViewItem(lecturer.Id.ToString());
-                lvi.Tag = lecturer;   // link lecturer object to listview item
-                lvi.SubItems.Add(lecturer.FullName.ToString());
-                lvi.SubItems.Add(lecturer.TelephoneNumber.ToString());
-                lvi.SubItems.Add(lecturer.DateOfBirth.ToString());
-                lvi.SubItems.Add(lecturer.RoomID.ToString());
-                listViewLecturers.Items.Add(lvi);
-            }
-        }
-
+    // Rooms - Saif
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowRoomsPanel();
@@ -168,7 +118,6 @@ namespace SomerenUI
             pnlDashboard.Hide();
             pnlStudents.Hide();
             pnlActivities.Hide();
-            pnlLecturers.Hide();
 
             // show lecturers
             pnlRooms.Show();
@@ -213,5 +162,65 @@ namespace SomerenUI
                 listViewRooms.Items.Add(rvi);
             }
         }
+    // Rooms - END
+
+    // Activity - Sagy
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowActivitiesPanel();
+        }
+        private void ShowActivitiesPanel()
+        {
+            // hide all other panels
+            pnlDashboard.Hide();
+            pnlStudents.Hide();
+            pnlRooms.Hide();
+
+            // show activities
+            pnlActivities.Show();
+
+            try
+            {
+                // get and display all activities
+                List<Activity> activities = GetActivities();
+                DisplayActivities(activities);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the activities: " + e.Message);
+            }
+        }
+
+        private List<Activity> GetActivities()
+        {
+            ActivityService activityService = new ActivityService();
+            List<Activity> activities = activityService.GetActivities();
+            return activities;
+        }
+
+        private void DisplayActivities(List<Activity> activities)
+        {
+            // clear the listview before filling it
+            listViewActivities.Clear();
+            
+            listViewActivities.Columns.Add("Schedule_ID", 100);
+            listViewActivities.Columns.Add("Capacity Varchar", 160);
+            listViewActivities.Columns.Add("Lecturer_ID",160);
+            listViewActivities.Columns.Add("Student_ID" ,160);
+   
+
+            foreach ( Activity activity in activities)
+            {
+                ListViewItem lvi = new ListViewItem(activity.Schedule_ID.ToString());
+                lvi.Tag = activity; // link lecturer object to listview item
+                lvi.SubItems.Add(activity.Capacity.ToString());
+                lvi.SubItems.Add(activity.Lecturer_ID.ToString());
+                lvi.SubItems.Add(activity.Student_ID.ToString());
+               
+                
+                listViewActivities.Items.Add(lvi);
+            }
+        }
+    // Activity - END
     }
 }
