@@ -12,7 +12,7 @@ namespace SomerenUI
         {
             InitializeComponent();
             pnlActivities.Visible = false;
-            pnlRooms.Visible = false;
+            
             pnlStudents.Visible = false;
         }
 
@@ -21,7 +21,7 @@ namespace SomerenUI
             // hide all other panels
             pnlStudents.Hide();
             pnlActivities.Hide();
-            pnlRooms.Hide();
+          
 
             // show dashboard
             pnlDashboard.Show();
@@ -33,7 +33,7 @@ namespace SomerenUI
             // hide all other panels
             pnlDashboard.Hide();
             pnlActivities.Hide();
-            pnlRooms.Hide();
+           
 
             // show students
             pnlStudents.Show();
@@ -109,59 +109,11 @@ namespace SomerenUI
     // Rooms - Saif
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowRoomsPanel();
+            RoomsUI roomsUI = new RoomsUI(); 
+            roomsUI.ShowDialog();
         }
 
-        private void ShowRoomsPanel()
-        {
-            // hide all other panels
-            pnlDashboard.Hide();
-            pnlStudents.Hide();
-            pnlActivities.Hide();
-
-            // show lecturers
-            pnlRooms.Show();
-
-            try
-            {
-                // get and display all lecturers
-                List<Room> rooms = GetRooms();
-                DisplayRooms(rooms);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
-            }
-        }
-
-        private List<Room> GetRooms()
-        {
-            RoomService roomService = new RoomService();
-            List<Room> rooms = roomService.GetRooms();
-            return rooms;
-        }
-
-        private void DisplayRooms(List<Room> rooms)
-        {
-            // clear the listview before filling it
-            listViewRooms.Clear();
-
-            listViewRooms.Columns.Add("Room Id", 100);
-            listViewRooms.Columns.Add("Capacity", 160);
-            listViewRooms.Columns.Add("Floor", 160);
-            listViewRooms.Columns.Add("Building", 160);
-            
-
-            foreach (Room room in rooms)
-            {
-                ListViewItem rvi = new ListViewItem(room.Id.ToString());
-                rvi.Tag = room;   // link lecturer object to listview item
-                rvi.SubItems.Add(room.capacity.ToString());
-                rvi.SubItems.Add(room.floor.ToString());
-                rvi.SubItems.Add(room.building.ToString());
-                listViewRooms.Items.Add(rvi);
-            }
-        }
+        
     // Rooms - END
 
     // Activity - Sagy
@@ -174,7 +126,7 @@ namespace SomerenUI
             // hide all other panels
             pnlDashboard.Hide();
             pnlStudents.Hide();
-            pnlRooms.Hide();
+            
 
             // show activities
             pnlActivities.Show();
