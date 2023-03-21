@@ -27,61 +27,6 @@ namespace SomerenUI
             pnlDashboard.Show();
         }
 
-    // Students - Zoran
-        private void ShowStudentsPanel()
-        {
-            // hide all other panels
-            pnlDashboard.Hide();
-            pnlActivities.Hide();
-           
-
-            // show students
-            pnlStudents.Show();
-
-            try
-            {
-                // get and display all students
-                List<Student> students = GetStudents();
-                DisplayStudents(students);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
-            }
-        }
-
-        private List<Student> GetStudents()
-        {
-            StudentService studentService = new StudentService();
-            List<Student> students = studentService.GetStudents();
-            return students;
-        }
-
-        private void DisplayStudents(List<Student> students)
-        {
-            // clear the listview before filling it
-            listViewStudents.Clear();
-
-            listViewStudents.Columns.Add("Student Id", 100);
-            listViewStudents.Columns.Add("Class", 60);
-            listViewStudents.Columns.Add("First Name", 120);
-            listViewStudents.Columns.Add("Last Name", 120);
-            listViewStudents.Columns.Add("Telephone Number", 160);
-            listViewStudents.Columns.Add("Room Id", 100);
-            
-            foreach (Student student in students)
-            {
-                ListViewItem li = new ListViewItem(student.StudentID.ToString());
-                li.Tag = student;   // link student object to listview item
-                li.SubItems.Add(student.Class.ToString());
-                li.SubItems.Add(student.FirstName.ToString());
-                li.SubItems.Add(student.LastName.ToString());
-                li.SubItems.Add(student.TelephoneNumber.ToString());
-                li.SubItems.Add(student.RoomID.ToString());
-                listViewStudents.Items.Add(li);
-            }
-        }
-
         private void dashboardToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
             ShowDashboardPanel();
@@ -92,10 +37,14 @@ namespace SomerenUI
             Application.Exit();
         }
 
+        // Students - Zoran
+
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowStudentsPanel();
+            StudentUI studentUI = new StudentUI();
+            studentUI.ShowDialog();
         }
+
     // Students - END
 
     // Lecturers - Ignas
