@@ -30,13 +30,11 @@ namespace SomerenUI
         }
 
     // Students - Zoran
-
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StudentUI studentUI = new StudentUI();
             studentUI.ShowDialog();
         }
-
     // Students - END
 
     // Lecturers - Ignas
@@ -45,7 +43,14 @@ namespace SomerenUI
             LecturerUI lecturerUI = new LecturerUI();
             lecturerUI.ShowDialog();
         }
-    // Lecturer - END*/
+    // Lecturer - END
+    // Revenue - Ignas
+        private void revenueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RevenueUI RevenueUI = new RevenueUI();
+            RevenueUI.ShowDialog();
+        }
+    // Revenue - END
 
     // Rooms - Saif
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -62,5 +67,6 @@ namespace SomerenUI
             ActivityUI.ShowDialog();   
         }
     // Activity - END
+
     }
 }
