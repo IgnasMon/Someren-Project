@@ -47,18 +47,12 @@
             this.pictureBoxActivities = new System.Windows.Forms.PictureBox();
             this.listViewActivities = new System.Windows.Forms.ListView();
             this.lblActivities = new System.Windows.Forms.Label();
-            this.pnlRooms = new System.Windows.Forms.Panel();
-            this.pictureBoxRooms = new System.Windows.Forms.PictureBox();
-            this.listViewRooms = new System.Windows.Forms.ListView();
-            this.lblRooms = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
             this.pnlStudents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStudents)).BeginInit();
             this.pnlActivities.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActivities)).BeginInit();
-            this.pnlRooms.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRooms)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -148,6 +142,7 @@
             // 
             // pnlStudents
             // 
+            this.pnlStudents.Controls.Add(this.pnlActivities);
             this.pnlStudents.Controls.Add(this.pictureBoxStudents);
             this.pnlStudents.Controls.Add(this.listViewStudents);
             this.pnlStudents.Controls.Add(this.lblStudents);
@@ -192,7 +187,7 @@
             this.pnlActivities.Controls.Add(this.pictureBoxActivities);
             this.pnlActivities.Controls.Add(this.listViewActivities);
             this.pnlActivities.Controls.Add(this.lblActivities);
-            this.pnlActivities.Location = new System.Drawing.Point(8, 51);
+            this.pnlActivities.Location = new System.Drawing.Point(899, 131);
             this.pnlActivities.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlActivities.Name = "pnlActivities";
             this.pnlActivities.Size = new System.Drawing.Size(1072, 621);
@@ -228,54 +223,11 @@
             this.lblActivities.TabIndex = 0;
             this.lblActivities.Text = "Activities";
             // 
-            // pnlRooms
-            // 
-            this.pnlRooms.Controls.Add(this.pictureBoxRooms);
-            this.pnlRooms.Controls.Add(this.listViewRooms);
-            this.pnlRooms.Controls.Add(this.lblRooms);
-            this.pnlRooms.Location = new System.Drawing.Point(5, 60);
-            this.pnlRooms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pnlRooms.Name = "pnlRooms";
-            this.pnlRooms.Size = new System.Drawing.Size(1072, 621);
-            this.pnlRooms.TabIndex = 5;
-            // 
-            // pictureBoxRooms
-            // 
-            this.pictureBoxRooms.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRooms.Image")));
-            this.pictureBoxRooms.Location = new System.Drawing.Point(920, 0);
-            this.pictureBoxRooms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBoxRooms.Name = "pictureBoxRooms";
-            this.pictureBoxRooms.Size = new System.Drawing.Size(149, 164);
-            this.pictureBoxRooms.TabIndex = 2;
-            this.pictureBoxRooms.TabStop = false;
-            // 
-            // listViewRooms
-            // 
-            this.listViewRooms.Location = new System.Drawing.Point(18, 56);
-            this.listViewRooms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listViewRooms.Name = "listViewRooms";
-            this.listViewRooms.Size = new System.Drawing.Size(875, 408);
-            this.listViewRooms.TabIndex = 1;
-            this.listViewRooms.UseCompatibleStateImageBehavior = false;
-            this.listViewRooms.View = System.Windows.Forms.View.Details;
-            // 
-            // lblRooms
-            // 
-            this.lblRooms.AutoSize = true;
-            this.lblRooms.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblRooms.Location = new System.Drawing.Point(15, 9);
-            this.lblRooms.Name = "lblRooms";
-            this.lblRooms.Size = new System.Drawing.Size(110, 41);
-            this.lblRooms.TabIndex = 0;
-            this.lblRooms.Text = "Rooms";
-            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 673);
-            this.Controls.Add(this.pnlRooms);
-            this.Controls.Add(this.pnlActivities);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlDashboard);
@@ -293,9 +245,6 @@
             this.pnlActivities.ResumeLayout(false);
             this.pnlActivities.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActivities)).EndInit();
-            this.pnlRooms.ResumeLayout(false);
-            this.pnlRooms.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRooms)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,10 +267,6 @@
         private System.Windows.Forms.ListView listViewStudents;
         private System.Windows.Forms.Label lblStudents;
         private System.Windows.Forms.Panel pnlActivities;
-        private System.Windows.Forms.Panel pnlRooms;
-        private System.Windows.Forms.PictureBox pictureBoxRooms;
-        private System.Windows.Forms.ListView listViewRooms;
-        private System.Windows.Forms.Label lblRooms;
         private System.Windows.Forms.PictureBox pictureBoxActivities;
         private System.Windows.Forms.ListView listViewActivities;
         private System.Windows.Forms.Label lblActivities;
