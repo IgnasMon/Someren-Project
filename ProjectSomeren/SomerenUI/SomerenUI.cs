@@ -11,18 +11,10 @@ namespace SomerenUI
         public SomerenUI()
         {
             InitializeComponent();
-            pnlActivities.Visible = false;
-            
-            pnlStudents.Visible = false;
         }
 
         private void ShowDashboardPanel()
         {
-            // hide all other panels
-            pnlStudents.Hide();
-            pnlActivities.Hide();
-          
-
             // show dashboard
             pnlDashboard.Show();
         }
@@ -37,7 +29,7 @@ namespace SomerenUI
             Application.Exit();
         }
 
-        // Students - Zoran
+    // Students - Zoran
 
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -61,66 +53,13 @@ namespace SomerenUI
             RoomsUI roomsUI = new RoomsUI(); 
             roomsUI.ShowDialog();
         }
-
-        
     // Rooms - END
 
     // Activity - Sagy
-        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)   
         {
-            ShowActivitiesPanel();
-        }
-        private void ShowActivitiesPanel()
-        {
-            // hide all other panels
-            pnlDashboard.Hide();
-            pnlStudents.Hide();
-            
-
-            // show activities
-            pnlActivities.Show();
-
-            try
-            {
-                // get and display all activities
-                List<Activity> activities = GetActivities();
-                DisplayActivities(activities);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Something went wrong while loading the activities: " + e.Message);
-            }
-        }
-
-        private List<Activity> GetActivities()
-        {
-            ActivityService activityService = new ActivityService();
-            List<Activity> activities = activityService.GetActivities();
-            return activities;
-        }
-
-        private void DisplayActivities(List<Activity> activities)
-        {
-            // clear the listview before filling it
-            listViewActivities.Clear();
-            
-            listViewActivities.Columns.Add("Schedule_ID", 100);
-            listViewActivities.Columns.Add("Capacity Varchar", 160);
-            listViewActivities.Columns.Add("Lecturer_ID",160);
-            listViewActivities.Columns.Add("Student_ID" ,160);
-   
-
-            foreach ( Activity activity in activities)
-            {
-                ListViewItem lvi = new ListViewItem(activity.Schedule_ID.ToString());
-                lvi.Tag = activity; // link lecturer object to listview item
-                lvi.SubItems.Add(activity.Capacity.ToString());
-                lvi.SubItems.Add(activity.Lecturer_ID.ToString());
-                lvi.SubItems.Add(activity.Student_ID.ToString());
-               
-                
-                listViewActivities.Items.Add(lvi);
-            }
+            ActivityUI ActivityUI = new ActivityUI();
+            ActivityUI.ShowDialog();   
         }
     // Activity - END
     }
