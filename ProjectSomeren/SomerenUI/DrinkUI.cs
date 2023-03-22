@@ -1,9 +1,11 @@
-﻿using SomerenModel;
+﻿using SomerenDAL;
+using SomerenModel;
 using SomerenService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +16,8 @@ namespace SomerenUI
 {
     public partial class DrinkUI : Form
     {
+        DrinkDao drinkDao = new DrinkDao();
+
         public DrinkUI()
         {
             InitializeComponent();
@@ -74,6 +78,88 @@ namespace SomerenUI
                 lvi.SubItems.Add(drink.Amount.ToString());
                 listViewDrinks.Items.Add(lvi);
             }
+        }
+
+        // Buttons
+
+        // Create data in Database
+        private void createButton_Click(object sender, EventArgs e)
+        {
+            // Variables
+            // Should be optimised so it doesn't have to be copy pasted in every method..
+            string drink_ID = drinkIdTextBox.Text;
+            string name = nameTextBox.Text;
+            string isAlcoholic;
+            string price = priceTextBox.Text;
+            string amount = amountTextBox.Text;
+
+            bool isAlcoholicBool = isAlcoholicCheckBox.Checked;
+
+            if (isAlcoholicBool == true)
+                isAlcoholic = "1";
+            else
+                isAlcoholic = "0";
+
+            // Create Query
+            drinkDao.UpdateDrinks($"INSERT INTO dbo.drinks " +
+                $"VALUES ({drink_ID}, '{name}', {isAlcoholic}, {price}, {amount}); ");
+
+            // Refresh
+            ShowDrinksPanel();
+        }
+
+        // Update data in Database
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            // Variables
+            // Should be optimised so it doesn't have to be copy pasted in every method..
+            string drink_ID = drinkIdTextBox.Text;
+            string name = nameTextBox.Text;
+            string isAlcoholic;
+            string price = priceTextBox.Text;
+            string amount = amountTextBox.Text;
+
+            bool isAlcoholicBool = isAlcoholicCheckBox.Checked;
+
+            if (isAlcoholicBool == true)
+                isAlcoholic = "1";
+            else
+                isAlcoholic = "0";
+
+            // Update Query
+            drinkDao.UpdateDrinks($"UPDATE dbo.drinks " +
+                $"SET [name] = '{name}', " +
+                $"is_Alcoholic = {isAlcoholic}, " +
+                $"price = {price}, " +
+                $"amount = {amount}" +
+                $"WHERE drink_ID = '{drink_ID}'");
+
+            // Refresh
+            ShowDrinksPanel();
+        }
+
+        // Delete data in Database
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            // Variables
+            string drink_ID = drinkIdTextBox.Text;
+
+            // Delete Query
+            drinkDao.UpdateDrinks($"DELETE FROM dbo.drinks " +
+                $"WHERE drink_ID = {drink_ID}");
+
+            // Refresh
+            ShowDrinksPanel();
+        }
+
+        //Clear the Text Boxes
+        private void clearTextBoxesButton_Click(object sender, EventArgs e)
+        {
+            drinkIdTextBox.Clear();
+            nameTextBox.Clear();
+            isAlcoholicCheckBox.Checked = false;
+            priceTextBox.Clear();
+            amountTextBox.Clear();
         }
     }
 }

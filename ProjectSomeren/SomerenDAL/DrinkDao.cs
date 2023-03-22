@@ -36,5 +36,11 @@ namespace SomerenDAL
             }
             return drinks;
         }
+
+        public void UpdateDrinks(string query)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
+        }
     }
 }
