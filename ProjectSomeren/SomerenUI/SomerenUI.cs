@@ -35,9 +35,15 @@ namespace SomerenUI
             StudentUI studentUI = new StudentUI();
             studentUI.ShowDialog();
         }
-    // Students - END
 
-    // Lecturers - Ignas
+        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DrinkUI drinkUI = new DrinkUI();
+            drinkUI.ShowDialog();
+        }
+        // Students - END
+
+        // Lecturers - Ignas
         private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             LecturerUI lecturerUI = new LecturerUI();
@@ -66,7 +72,8 @@ namespace SomerenUI
             ActivityUI ActivityUI = new ActivityUI();
             ActivityUI.ShowDialog();   
         }
-    // Activity - END
+
+        // Activity - END
 
     }
 }
