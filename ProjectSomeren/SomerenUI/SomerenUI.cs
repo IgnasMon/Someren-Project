@@ -72,8 +72,13 @@ namespace SomerenUI
             ActivityUI ActivityUI = new ActivityUI();
             ActivityUI.ShowDialog();   
         }
-
         // Activity - END
+
+        private void vATToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VatUI VATUI = new VatUI();
+            VATUI.ShowDialog();
+        }
 
     }
 }
