@@ -12,6 +12,7 @@ namespace SomerenDAL
 {
     public class RevenueDao : BaseDao
     {
+    // All Orders
         public List<Order> GetAllOrders()
         {
             string query = "SELECT [order_ID], [student_ID], [drink_ID], [voucher], [date] " +
@@ -39,14 +40,22 @@ namespace SomerenDAL
             return orders;
         }
 
-        public List<Sale> GetAllSales()
+    // All Sales
+        public List<Sale> GetAllSales(string dateStart, string dateEnd)
         {
-            string query = "SELECT D.[name] AS Drink_Name, COUNT(O.[drink_ID]) AS Amount " +
+            string query = "Select Distinct D.[name] AS Drink_Name, (select COUNT(*) " +
+                                                                    "from dbo.orders AS O " +
+                                                                    "WHERE O.[drink_ID]= D.[drink_ID] " +
+                                                                    "AND O.[date] BETWEEN @startDate AND @endDate) AS Amount " +
                             "FROM dbo.drinks AS D " +
-                            "JOIN dbo.orders AS O ON D.[drink_ID]=O.[drink_ID] " +
-                            "GROUP BY D.[name] ";
+                            "JOIN dbo.orders AS O ON D.[drink_ID] = O.[drink_ID]";
 
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+
+            // Swaping query @ parameters
+            AssignSqlParameter(sqlParameters, 0, SqlDbType.Date, "@startDate", dateStart);
+            AssignSqlParameter(sqlParameters, 1, SqlDbType.Date, "@endDate", dateEnd);
+
             return ReadSaleTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
@@ -68,16 +77,24 @@ namespace SomerenDAL
             return sales;
         }
 
-        public List<Customer> GetAllCustomers()
+    // Customers
+        // All Customers
+        public List<Customer> GetAllCustomers(string dateStart, string dateEnd)
         {
-            string query = "SELECT S.[first_name], S.[last_name], COUNT(O.[student_ID]) AS Amount " +
+            string query = "Select Distinct S.[first_name], S.[last_name], " +
+                                    "(select COUNT(*) " +
+                                    "from dbo.orders AS O " +
+                                    "WHERE O.[student_ID]= S.[student_ID] " +
+                                    "AND O.[date] BETWEEN @startDate AND @endDate) AS Amount " +
                             "FROM dbo.students AS S " +
-                            "JOIN dbo.orders AS O ON S.[student_ID]=O.[student_ID] " +
-                            "JOIN dbo.drinks AS D ON O.[drink_ID]=D.[drink_ID] " +
-                            "GROUP BY S.[first_name], S.[last_name] " +
-                            "HAVING COUNT(D.[drink_ID]) >= 1";
+                            "JOIN dbo.orders AS O ON S.[student_ID] = O.[student_ID]";
 
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+
+            // Swaping query @ parameters
+            AssignSqlParameter(sqlParameters, 0, SqlDbType.Date, "@startDate", dateStart);
+            AssignSqlParameter(sqlParameters, 1, SqlDbType.Date, "@endDate", dateEnd);
+
             return ReadCustomerTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
@@ -98,6 +115,48 @@ namespace SomerenDAL
                 count++;
             }
             return customers;
+        }
+
+        // Total Customers
+    /*    public Customer GetTotalCustomers(string dateStart, string dateEnd) 
+        {
+            string query = "Select Count(O.order_id) AS Amount " +
+                            "from dbo.orders AS O" +
+                            "Where O.[date] BETWEEN @dateStart AND @dateEnd";
+
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+
+            // Swaping query @ parameters
+            AssignSqlParameter(sqlParameters, 0, SqlDbType.Date, "@startDate", dateStart);
+            AssignSqlParameter(sqlParameters, 1, SqlDbType.Date, "@endDate", dateEnd);
+
+            return ReadTotalCustomerTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private Customer ReadTotalCustomerTables(DataTable dataTable)
+        {
+            Customer customer = new Customer();
+            int count = 1;
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Customer customer = new Customer()
+                {
+                    ID = count,
+                    FirstName = dr["first_name"].ToString(),
+                    LastName = dr["last_name"].ToString(),
+                    Amount = (int)dr["Amount"],
+                };
+            }
+            return customer;
+        }
+*/
+        private void AssignSqlParameter(SqlParameter[] sqlParameters, int index, SqlDbType dataType, string parameterName, string parameterValue)
+        {
+            // Swaping query @ parameters
+            sqlParameters[index] = new SqlParameter();
+            sqlParameters[index].SqlDbType = dataType;
+            sqlParameters[index].ParameterName = parameterName;
+            sqlParameters[index].Value = parameterValue;
         }
     }
 }

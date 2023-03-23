@@ -32,7 +32,6 @@
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             dashboardToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ordersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             revenueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,13 +40,19 @@
             listViewOrder = new System.Windows.Forms.ListView();
             lblOrder = new System.Windows.Forms.Label();
             pnlRevenue = new System.Windows.Forms.Panel();
-            monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            btnUpdate = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            lblCustomersTotal = new System.Windows.Forms.Label();
+            lblStartDate = new System.Windows.Forms.Label();
+            lblEndDate = new System.Windows.Forms.Label();
+            monthCalendarEnd = new System.Windows.Forms.MonthCalendar();
+            lblCustomers = new System.Windows.Forms.Label();
+            monthCalendarStart = new System.Windows.Forms.MonthCalendar();
             listViewSales = new System.Windows.Forms.ListView();
             lblSales = new System.Windows.Forms.Label();
             pictureBoxRevenue = new System.Windows.Forms.PictureBox();
             listViewCustomers = new System.Windows.Forms.ListView();
             lblRevenue = new System.Windows.Forms.Label();
-            lblCustomers = new System.Windows.Forms.Label();
             menuStrip1.SuspendLayout();
             pnlOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxOrder).BeginInit();
@@ -61,13 +66,13 @@
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { applicationToolStripMenuItem, ordersToolStripMenuItem, revenueToolStripMenuItem });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new System.Drawing.Size(1277, 28);
+            menuStrip1.Size = new System.Drawing.Size(1144, 28);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
             // applicationToolStripMenuItem
             // 
-            applicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { dashboardToolStripMenuItem1, refreshToolStripMenuItem, closeToolStripMenuItem });
+            applicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { dashboardToolStripMenuItem1, closeToolStripMenuItem });
             applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
             applicationToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
             applicationToolStripMenuItem.Text = "Application";
@@ -77,13 +82,6 @@
             dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
             dashboardToolStripMenuItem1.Size = new System.Drawing.Size(165, 26);
             dashboardToolStripMenuItem1.Text = "Dashboard";
-            // 
-            // refreshToolStripMenuItem
-            // 
-            refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            refreshToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
-            refreshToolStripMenuItem.Text = "Refresh";
-            refreshToolStripMenuItem.Click += refreshToolStripMenuItem_Click;
             // 
             // closeToolStripMenuItem
             // 
@@ -150,8 +148,14 @@
             // 
             // pnlRevenue
             // 
+            pnlRevenue.Controls.Add(btnUpdate);
+            pnlRevenue.Controls.Add(label1);
+            pnlRevenue.Controls.Add(lblCustomersTotal);
+            pnlRevenue.Controls.Add(lblStartDate);
+            pnlRevenue.Controls.Add(lblEndDate);
+            pnlRevenue.Controls.Add(monthCalendarEnd);
             pnlRevenue.Controls.Add(lblCustomers);
-            pnlRevenue.Controls.Add(monthCalendar1);
+            pnlRevenue.Controls.Add(monthCalendarStart);
             pnlRevenue.Controls.Add(listViewSales);
             pnlRevenue.Controls.Add(lblSales);
             pnlRevenue.Controls.Add(pictureBoxRevenue);
@@ -160,22 +164,88 @@
             pnlRevenue.Location = new System.Drawing.Point(9, 40);
             pnlRevenue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             pnlRevenue.Name = "pnlRevenue";
-            pnlRevenue.Size = new System.Drawing.Size(1177, 545);
+            pnlRevenue.Size = new System.Drawing.Size(1108, 545);
             pnlRevenue.TabIndex = 10;
             // 
-            // monthCalendar1
+            // btnUpdate
             // 
-            monthCalendar1.Location = new System.Drawing.Point(18, 65);
-            monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 5;
+            btnUpdate.Location = new System.Drawing.Point(488, 170);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new System.Drawing.Size(94, 29);
+            btnUpdate.TabIndex = 12;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(21, 508);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(154, 20);
+            label1.TabIndex = 11;
+            label1.Text = "Total amount of sales:";
+            // 
+            // lblCustomersTotal
+            // 
+            lblCustomersTotal.AutoSize = true;
+            lblCustomersTotal.Location = new System.Drawing.Point(672, 508);
+            lblCustomersTotal.Name = "lblCustomersTotal";
+            lblCustomersTotal.Size = new System.Drawing.Size(311, 20);
+            lblCustomersTotal.TabIndex = 10;
+            lblCustomersTotal.Text = "Total customers (who bought at least 1 drink):";
+            // 
+            // lblStartDate
+            // 
+            lblStartDate.AutoSize = true;
+            lblStartDate.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblStartDate.Location = new System.Drawing.Point(141, 42);
+            lblStartDate.Name = "lblStartDate";
+            lblStartDate.Size = new System.Drawing.Size(148, 41);
+            lblStartDate.TabIndex = 9;
+            lblStartDate.Text = "Start Date";
+            // 
+            // lblEndDate
+            // 
+            lblEndDate.AutoSize = true;
+            lblEndDate.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblEndDate.Location = new System.Drawing.Point(672, 42);
+            lblEndDate.Name = "lblEndDate";
+            lblEndDate.Size = new System.Drawing.Size(138, 41);
+            lblEndDate.TabIndex = 8;
+            lblEndDate.Text = "End Date";
+            // 
+            // monthCalendarEnd
+            // 
+            monthCalendarEnd.Location = new System.Drawing.Point(672, 92);
+            monthCalendarEnd.MaxSelectionCount = 1;
+            monthCalendarEnd.Name = "monthCalendarEnd";
+            monthCalendarEnd.TabIndex = 7;
+            // 
+            // lblCustomers
+            // 
+            lblCustomers.AutoSize = true;
+            lblCustomers.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblCustomers.Location = new System.Drawing.Point(672, 308);
+            lblCustomers.Name = "lblCustomers";
+            lblCustomers.Size = new System.Drawing.Size(160, 41);
+            lblCustomers.TabIndex = 6;
+            lblCustomers.Text = "Customers";
+            // 
+            // monthCalendarStart
+            // 
+            monthCalendarStart.Location = new System.Drawing.Point(141, 92);
+            monthCalendarStart.MaxSelectionCount = 1;
+            monthCalendarStart.Name = "monthCalendarStart";
+            monthCalendarStart.TabIndex = 5;
             // 
             // listViewSales
             // 
-            listViewSales.Location = new System.Drawing.Point(292, 95);
+            listViewSales.Location = new System.Drawing.Point(21, 353);
             listViewSales.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             listViewSales.MultiSelect = false;
             listViewSales.Name = "listViewSales";
-            listViewSales.Size = new System.Drawing.Size(228, 373);
+            listViewSales.Size = new System.Drawing.Size(382, 142);
             listViewSales.TabIndex = 4;
             listViewSales.UseCompatibleStateImageBehavior = false;
             listViewSales.View = System.Windows.Forms.View.Details;
@@ -184,7 +254,7 @@
             // 
             lblSales.AutoSize = true;
             lblSales.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lblSales.Location = new System.Drawing.Point(292, 50);
+            lblSales.Location = new System.Drawing.Point(21, 308);
             lblSales.Name = "lblSales";
             lblSales.Size = new System.Drawing.Size(85, 41);
             lblSales.TabIndex = 3;
@@ -193,7 +263,7 @@
             // pictureBoxRevenue
             // 
             pictureBoxRevenue.Image = (System.Drawing.Image)resources.GetObject("pictureBoxRevenue.Image");
-            pictureBoxRevenue.Location = new System.Drawing.Point(1025, 4);
+            pictureBoxRevenue.Location = new System.Drawing.Point(946, 0);
             pictureBoxRevenue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             pictureBoxRevenue.Name = "pictureBoxRevenue";
             pictureBoxRevenue.Size = new System.Drawing.Size(149, 164);
@@ -202,11 +272,11 @@
             // 
             // listViewCustomers
             // 
-            listViewCustomers.Location = new System.Drawing.Point(526, 95);
+            listViewCustomers.Location = new System.Drawing.Point(672, 353);
             listViewCustomers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             listViewCustomers.MultiSelect = false;
             listViewCustomers.Name = "listViewCustomers";
-            listViewCustomers.Size = new System.Drawing.Size(289, 373);
+            listViewCustomers.Size = new System.Drawing.Size(387, 142);
             listViewCustomers.TabIndex = 1;
             listViewCustomers.UseCompatibleStateImageBehavior = false;
             listViewCustomers.View = System.Windows.Forms.View.Details;
@@ -215,27 +285,17 @@
             // 
             lblRevenue.AutoSize = true;
             lblRevenue.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lblRevenue.Location = new System.Drawing.Point(21, 15);
+            lblRevenue.Location = new System.Drawing.Point(423, 15);
             lblRevenue.Name = "lblRevenue";
             lblRevenue.Size = new System.Drawing.Size(221, 41);
             lblRevenue.TabIndex = 0;
             lblRevenue.Text = "Revenue report";
             // 
-            // lblCustomers
-            // 
-            lblCustomers.AutoSize = true;
-            lblCustomers.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lblCustomers.Location = new System.Drawing.Point(526, 50);
-            lblCustomers.Name = "lblCustomers";
-            lblCustomers.Size = new System.Drawing.Size(160, 41);
-            lblCustomers.TabIndex = 6;
-            lblCustomers.Text = "Customers";
-            // 
             // RevenueUI
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1277, 614);
+            ClientSize = new System.Drawing.Size(1144, 614);
             Controls.Add(pnlRevenue);
             Controls.Add(pnlOrder);
             Controls.Add(menuStrip1);
@@ -266,13 +326,18 @@
         private System.Windows.Forms.Panel pnlRevenue;
         private System.Windows.Forms.ListView listViewCustomers;
         private System.Windows.Forms.Label lblRevenue;
-        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.ListView listViewSales;
         private System.Windows.Forms.Label lblSales;
         private System.Windows.Forms.PictureBox pictureBoxRevenue;
         private System.Windows.Forms.ToolStripMenuItem ordersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem revenueToolStripMenuItem;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar monthCalendarStart;
         private System.Windows.Forms.Label lblCustomers;
+        private System.Windows.Forms.Label lblEndDate;
+        private System.Windows.Forms.MonthCalendar monthCalendarEnd;
+        private System.Windows.Forms.Label lblStartDate;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCustomersTotal;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

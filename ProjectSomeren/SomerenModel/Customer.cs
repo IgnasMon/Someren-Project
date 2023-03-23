@@ -17,5 +17,7 @@ namespace SomerenModel
         {
             get { return $"{FirstName} {LastName}"; }
         }
+
+        public int TotalCustomers { get; set; }
     }
 }
