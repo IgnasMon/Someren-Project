@@ -72,6 +72,13 @@ namespace SomerenUI
             ActivityUI ActivityUI = new ActivityUI();
             ActivityUI.ShowDialog();   
         }
+
+        private void cashRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CashRegisterUI cashRegisterUI = new CashRegisterUI();
+            cashRegisterUI.ShowDialog();
+        }
+
         // Activity - END
 
         private void vATToolStripMenuItem_Click(object sender, EventArgs e)
@@ -79,6 +86,5 @@ namespace SomerenUI
             VatUI VATUI = new VatUI();
             VATUI.ShowDialog();
         }
-
     }
 }
