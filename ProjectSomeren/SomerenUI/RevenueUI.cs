@@ -18,12 +18,9 @@ namespace SomerenUI
         public RevenueUI()
         {
             InitializeComponent();
-            //ShowOrdersPanel();
-        }
-
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            LoadOrders();
+            LoadSales();
+            LoadCustomers();
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -40,7 +37,20 @@ namespace SomerenUI
         {
             ShowRevenuePanel();
         }
-    //Orders
+        //Orders
+        private void LoadOrders()
+        {
+            // Clear Items from the ListView
+            listViewOrder.Items.Clear();
+
+            // Create column names at the top of the ListViewItem
+            listViewOrder.Columns.Add("Order Id", 100);
+            listViewOrder.Columns.Add("Student Id", 140);
+            listViewOrder.Columns.Add("Drink Id", 140);
+            listViewOrder.Columns.Add("Order Date", 150);
+            listViewOrder.Columns.Add("Voucher", 60);
+        }
+
         private void ShowOrdersPanel()
         {
             pnlRevenue.Hide();
@@ -66,15 +76,8 @@ namespace SomerenUI
 
         private void DisplayOrders(List<Order> orders)
         {
-            // clear the listview before filling it
-            listViewOrder.Clear();
 
-            // Create column names at the top of the ListViewItem
-            listViewOrder.Columns.Add("Order Id", 100);
-            listViewOrder.Columns.Add("Student Id", 140);
-            listViewOrder.Columns.Add("Drink Id", 140);
-            listViewOrder.Columns.Add("Order Date", 150);
-            listViewOrder.Columns.Add("Voucher", 60);
+            listViewOrder.Items.Clear();
 
             // Fill in the Revenue table with entries from the DB 
             foreach (Order order in orders)
@@ -88,21 +91,28 @@ namespace SomerenUI
                 listViewOrder.Items.Add(lvi);
             }
         }
-    // Orders - END
+        // Orders - END
 
-    // Revenue
+        // Revenue
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            ShowRevenuePanel();
+        }
         // Sales
         private void ShowRevenuePanel()
         {
             pnlOrder.Hide();
             pnlRevenue.Show();
 
+            // Get selected dateStart and dateEnd
+            string dateStart = monthCalendarStart.SelectionRange.Start.ToString();
+            string dateEnd = monthCalendarEnd.SelectionRange.Start.ToString();
+
             try
             {
                 // get and display revenue
-                List<Sale> orders = GetSales();
-                List<Customer> customers = GetCustomers();
-                //DisplayRevenue(orders);
+                List<Sale> orders = GetSales(dateStart, dateEnd);
+                List<Customer> customers = GetCustomers(dateStart, dateEnd);
                 DisplayRevenue(orders, customers);
             }
             catch (Exception e)
@@ -119,21 +129,27 @@ namespace SomerenUI
         }
 
         // Sales
-        private List<Sale> GetSales()
-        {
-            RevenueService revenueService = new RevenueService();
-            List<Sale> sales = revenueService.GetSales();
-            return sales;
-        }
-
-        private void DisplaySales(List<Sale> sales)
+        private void LoadSales()
         {
             listViewSales.Clear();
 
             // Create column names at the top of the ListViewSales
             listViewSales.Columns.Add("ID", 40);
-            listViewSales.Columns.Add("Product Name", 110);
-            listViewSales.Columns.Add("Amount Sold", 70);
+            listViewSales.Columns.Add("Product Name", 150);
+            listViewSales.Columns.Add("Amount Sold", 120);
+        }
+
+        private List<Sale> GetSales(string dateStart, string dateEnd)
+        {
+            RevenueService revenueService = new RevenueService();
+            List<Sale> sales = revenueService.GetSales(dateStart, dateEnd);
+            return sales;
+        }
+
+        private void DisplaySales(List<Sale> sales)
+        {
+            // Clear Items from the ListView
+            listViewSales.Items.Clear();
 
             // Fill in the Revenue table with entries from the DB 
             foreach (Sale sale in sales)
@@ -147,21 +163,27 @@ namespace SomerenUI
         }
 
         // Customers
-        private List<Customer> GetCustomers()
-        {
-            RevenueService revenueService = new RevenueService();
-            List<Customer> customers = revenueService.GetCustomers();
-            return customers;
-        }
-
-        private void DisplayCustomers(List<Customer> customers)
+        private void LoadCustomers()
         {
             listViewCustomers.Clear();
 
             // Create column names at the top of the ListViewSales
             listViewCustomers.Columns.Add("ID", 40);
-            listViewCustomers.Columns.Add("Student Name", 110);
-            listViewCustomers.Columns.Add("Amount Bought", 70);
+            listViewCustomers.Columns.Add("Full Name", 150);
+            listViewCustomers.Columns.Add("Amount Bought", 120);
+        }
+
+        private List<Customer> GetCustomers(string dateStart, string dateEnd)
+        {
+            RevenueService revenueService = new RevenueService();
+            List<Customer> customers = revenueService.GetCustomers(dateStart, dateEnd);
+            return customers;
+        }
+
+        private void DisplayCustomers(List<Customer> customers)
+        {
+            // Clear Items from the ListView
+            listViewCustomers.Items.Clear();
 
             foreach (Customer customer in customers)
             {
