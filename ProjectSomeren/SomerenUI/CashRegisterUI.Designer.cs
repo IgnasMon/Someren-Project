@@ -38,6 +38,7 @@
             this.dashboardToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listViewDrinks = new System.Windows.Forms.ListView();
             this.pnlStudents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStudents)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -45,6 +46,7 @@
             // 
             // pnlStudents
             // 
+            this.pnlStudents.Controls.Add(this.listViewDrinks);
             this.pnlStudents.Controls.Add(this.pictureBoxStudents);
             this.pnlStudents.Controls.Add(this.listViewStudents);
             this.pnlStudents.Controls.Add(this.lblStudents);
@@ -64,9 +66,9 @@
             // 
             // listViewStudents
             // 
-            this.listViewStudents.Location = new System.Drawing.Point(16, 42);
+            this.listViewStudents.Location = new System.Drawing.Point(27, 42);
             this.listViewStudents.Name = "listViewStudents";
-            this.listViewStudents.Size = new System.Drawing.Size(766, 307);
+            this.listViewStudents.Size = new System.Drawing.Size(280, 307);
             this.listViewStudents.TabIndex = 1;
             this.listViewStudents.UseCompatibleStateImageBehavior = false;
             this.listViewStudents.View = System.Windows.Forms.View.Details;
@@ -105,13 +107,13 @@
             // dashboardToolStripMenuItem1
             // 
             this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
             this.dashboardToolStripMenuItem1.Text = "Dashboard";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.exitToolStripMenuItem.Text = "Close";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -121,6 +123,15 @@
             this.studentsToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.studentsToolStripMenuItem.Text = "Refresh";
             this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
+            // 
+            // listViewDrinks
+            // 
+            this.listViewDrinks.Location = new System.Drawing.Point(463, 42);
+            this.listViewDrinks.Name = "listViewDrinks";
+            this.listViewDrinks.Size = new System.Drawing.Size(280, 307);
+            this.listViewDrinks.TabIndex = 3;
+            this.listViewDrinks.UseCompatibleStateImageBehavior = false;
+            this.listViewDrinks.View = System.Windows.Forms.View.Details;
             // 
             // CashRegisterUI
             // 
@@ -153,5 +164,6 @@
         private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
+        private System.Windows.Forms.ListView listViewDrinks;
     }
 }

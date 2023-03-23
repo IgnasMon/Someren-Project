@@ -18,6 +18,7 @@ namespace SomerenUI
         {
             InitializeComponent();
             ShowStudentsPanel();
+            ShowDrinksPanel();
         }
 
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -75,7 +76,7 @@ namespace SomerenUI
                 listViewStudents.Items.Add(lvi);
             }
 
-            ShowDrinksPanel();
+            
         }
 
         private void ShowDrinksPanel()
@@ -103,11 +104,11 @@ namespace SomerenUI
         {
 
             // Create column names at the top of the ListViewItem
-            listViewStudents.Columns.Add("Drink Id", 80);
-            listViewStudents.Columns.Add("Name", 120);
-            listViewStudents.Columns.Add("Is Alcoholic", 100);
-            listViewStudents.Columns.Add("Price", 60);
-            listViewStudents.Columns.Add("Amount", 80);
+            listViewDrinks.Columns.Add("Drink Id", 80);
+            listViewDrinks.Columns.Add("Name", 120);
+            listViewDrinks.Columns.Add("Is Alcoholic", 100);
+            listViewDrinks.Columns.Add("Price", 60);
+            listViewDrinks.Columns.Add("Amount", 80);
 
             // Fill in the Drink table with entries from the DB 
             foreach (Drink drink in drinks)
@@ -118,7 +119,7 @@ namespace SomerenUI
                 lvi.SubItems.Add(drink.Is_Alcoholic.ToString());
                 lvi.SubItems.Add(drink.Price.ToString());
                 lvi.SubItems.Add(drink.Amount.ToString());
-                listViewStudents.Items.Add(lvi);
+                listViewDrinks.Items.Add(lvi);
             }
         }
     }
