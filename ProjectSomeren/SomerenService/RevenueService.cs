@@ -34,11 +34,11 @@ namespace SomerenService
             List<Customer> customers = revenuedb.GetAllCustomers(dateStart, dateEnd);
             return customers;
         }
-        
-      /*  public List<Customer> GetTotalCustomers(string dateStart, string dateEnd)
+
+        public int GetTotalCustomers(string dateStart, string dateEnd)
         {
-            Customer customers = revenuedb.GetTotalCustomers(dateStart, dateEnd);
-            return customers;
-        }*/
+            int totalCustomers = revenuedb.GetTotalCustomers(dateStart, dateEnd);
+            return totalCustomers;
+        }
     }
 }

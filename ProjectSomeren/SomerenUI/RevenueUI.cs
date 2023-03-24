@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -111,9 +112,10 @@ namespace SomerenUI
             try
             {
                 // get and display revenue
-                List<Sale> orders = GetSales(dateStart, dateEnd);
+                List<Sale> sales = GetSales(dateStart, dateEnd);
                 List<Customer> customers = GetCustomers(dateStart, dateEnd);
-                DisplayRevenue(orders, customers);
+                int totalCustomers = GetTotalCustomers(dateStart, dateEnd);
+                DisplayRevenue(sales, customers, totalCustomers);
             }
             catch (Exception e)
             {
@@ -121,11 +123,11 @@ namespace SomerenUI
             }
         }
 
-        //private void DisplayRevenue(List<Sale> sales)
-        private void DisplayRevenue(List<Sale> sales, List<Customer> customers)
+        private void DisplayRevenue(List<Sale> sales, List<Customer> customers, int totalCustomers)
         {
             DisplaySales(sales);
             DisplayCustomers(customers);
+            DisplayTotalCustomers(totalCustomers);
         }
 
         // Sales
@@ -136,7 +138,8 @@ namespace SomerenUI
             // Create column names at the top of the ListViewSales
             listViewSales.Columns.Add("ID", 40);
             listViewSales.Columns.Add("Product Name", 150);
-            listViewSales.Columns.Add("Amount Sold", 120);
+            listViewSales.Columns.Add("Price", 50);
+            listViewSales.Columns.Add("Amount Sold", 110);
         }
 
         private List<Sale> GetSales(string dateStart, string dateEnd)
@@ -157,6 +160,7 @@ namespace SomerenUI
                 ListViewItem lviSales = new ListViewItem(sale.ID.ToString());
                 lviSales.Tag = sale;   // link revenue object to listview item
                 lviSales.SubItems.Add(sale.Name.ToString());
+                lviSales.SubItems.Add(sale.Price.ToString());
                 lviSales.SubItems.Add(sale.Amount.ToString());
                 listViewSales.Items.Add(lviSales);
             }
@@ -173,6 +177,7 @@ namespace SomerenUI
             listViewCustomers.Columns.Add("Amount Bought", 120);
         }
 
+        // List of Customers
         private List<Customer> GetCustomers(string dateStart, string dateEnd)
         {
             RevenueService revenueService = new RevenueService();
@@ -193,6 +198,20 @@ namespace SomerenUI
                 lviCustomers.SubItems.Add(customer.Amount.ToString());
                 listViewCustomers.Items.Add(lviCustomers);
             }
+        }
+
+        // Total Customers
+        private int GetTotalCustomers(string dateStart, string dateEnd)
+        {
+            RevenueService revenueService = new RevenueService();
+            int totalCustomers = revenueService.GetTotalCustomers(dateStart, dateEnd);
+            return totalCustomers;
+        }
+
+        private void DisplayTotalCustomers(int totalCustomers)
+        {
+            lblTotalSales.Text = "";
+            lblTotalSales.Text += totalCustomers.ToString();
         }
     }
 }

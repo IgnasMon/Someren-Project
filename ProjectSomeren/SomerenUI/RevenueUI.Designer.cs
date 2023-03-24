@@ -40,9 +40,9 @@
             listViewOrder = new System.Windows.Forms.ListView();
             lblOrder = new System.Windows.Forms.Label();
             pnlRevenue = new System.Windows.Forms.Panel();
+            lblTotalSales = new System.Windows.Forms.Label();
             btnUpdate = new System.Windows.Forms.Button();
-            label1 = new System.Windows.Forms.Label();
-            lblCustomersTotal = new System.Windows.Forms.Label();
+            lblSalesTotal = new System.Windows.Forms.Label();
             lblStartDate = new System.Windows.Forms.Label();
             lblEndDate = new System.Windows.Forms.Label();
             monthCalendarEnd = new System.Windows.Forms.MonthCalendar();
@@ -148,9 +148,9 @@
             // 
             // pnlRevenue
             // 
+            pnlRevenue.Controls.Add(lblTotalSales);
             pnlRevenue.Controls.Add(btnUpdate);
-            pnlRevenue.Controls.Add(label1);
-            pnlRevenue.Controls.Add(lblCustomersTotal);
+            pnlRevenue.Controls.Add(lblSalesTotal);
             pnlRevenue.Controls.Add(lblStartDate);
             pnlRevenue.Controls.Add(lblEndDate);
             pnlRevenue.Controls.Add(monthCalendarEnd);
@@ -167,6 +167,14 @@
             pnlRevenue.Size = new System.Drawing.Size(1108, 545);
             pnlRevenue.TabIndex = 10;
             // 
+            // lblTotalSales
+            // 
+            lblTotalSales.AutoSize = true;
+            lblTotalSales.Location = new System.Drawing.Point(532, 353);
+            lblTotalSales.Name = "lblTotalSales";
+            lblTotalSales.Size = new System.Drawing.Size(0, 20);
+            lblTotalSales.TabIndex = 13;
+            // 
             // btnUpdate
             // 
             btnUpdate.Location = new System.Drawing.Point(488, 170);
@@ -177,23 +185,14 @@
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
             // 
-            // label1
+            // lblSalesTotal
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(21, 508);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(154, 20);
-            label1.TabIndex = 11;
-            label1.Text = "Total amount of sales:";
-            // 
-            // lblCustomersTotal
-            // 
-            lblCustomersTotal.AutoSize = true;
-            lblCustomersTotal.Location = new System.Drawing.Point(672, 508);
-            lblCustomersTotal.Name = "lblCustomersTotal";
-            lblCustomersTotal.Size = new System.Drawing.Size(311, 20);
-            lblCustomersTotal.TabIndex = 10;
-            lblCustomersTotal.Text = "Total customers (who bought at least 1 drink):";
+            lblSalesTotal.AutoSize = true;
+            lblSalesTotal.Location = new System.Drawing.Point(445, 353);
+            lblSalesTotal.Name = "lblSalesTotal";
+            lblSalesTotal.Size = new System.Drawing.Size(81, 20);
+            lblSalesTotal.TabIndex = 10;
+            lblSalesTotal.Text = "Total sales:";
             // 
             // lblStartDate
             // 
@@ -336,8 +335,8 @@
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.MonthCalendar monthCalendarEnd;
         private System.Windows.Forms.Label lblStartDate;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblCustomersTotal;
+        private System.Windows.Forms.Label lblSalesTotal;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Label lblTotalSales;
     }
 }

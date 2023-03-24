@@ -43,7 +43,7 @@ namespace SomerenDAL
     // All Sales
         public List<Sale> GetAllSales(string dateStart, string dateEnd)
         {
-            string query = "Select Distinct D.[name] AS Drink_Name, (select COUNT(*) " +
+            string query = "Select Distinct D.[name] AS Drink_Name, D.[price] AS Price, (select COUNT(*) " +
                                                                     "from dbo.orders AS O " +
                                                                     "WHERE O.[drink_ID]= D.[drink_ID] " +
                                                                     "AND O.[date] BETWEEN @startDate AND @endDate) AS Amount " +
@@ -69,6 +69,7 @@ namespace SomerenDAL
                 {
                     ID = count,
                     Name = dr["Drink_Name"].ToString(),
+                    Price = (decimal)dr["Price"],
                     Amount = (int)dr["Amount"],
                 };
                 sales.Add(sale);
@@ -77,7 +78,7 @@ namespace SomerenDAL
             return sales;
         }
 
-    // Customers
+        // Customers
         // All Customers
         public List<Customer> GetAllCustomers(string dateStart, string dateEnd)
         {
@@ -118,13 +119,13 @@ namespace SomerenDAL
         }
 
         // Total Customers
-    /*    public Customer GetTotalCustomers(string dateStart, string dateEnd) 
+        public int GetTotalCustomers(string dateStart, string dateEnd)
         {
-            string query = "Select Count(O.order_id) AS Amount " +
-                            "from dbo.orders AS O" +
-                            "Where O.[date] BETWEEN @dateStart AND @dateEnd";
+            string query = "Select Count(O.[order_ID]) AS Amount " +
+                            "from dbo.orders AS O " +
+                            "Where O.[date] BETWEEN @startDate AND @endDate";
 
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            SqlParameter[] sqlParameters = new SqlParameter[2];
 
             // Swaping query @ parameters
             AssignSqlParameter(sqlParameters, 0, SqlDbType.Date, "@startDate", dateStart);
@@ -133,23 +134,12 @@ namespace SomerenDAL
             return ReadTotalCustomerTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private Customer ReadTotalCustomerTables(DataTable dataTable)
+        private int ReadTotalCustomerTables(DataTable dataTable)
         {
-            Customer customer = new Customer();
-            int count = 1;
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                Customer customer = new Customer()
-                {
-                    ID = count,
-                    FirstName = dr["first_name"].ToString(),
-                    LastName = dr["last_name"].ToString(),
-                    Amount = (int)dr["Amount"],
-                };
-            }
-            return customer;
+            int totalCustomers = (int)dataTable.Rows[0]["Amount"];
+            return totalCustomers;
         }
-*/
+
         private void AssignSqlParameter(SqlParameter[] sqlParameters, int index, SqlDbType dataType, string parameterName, string parameterValue)
         {
             // Swaping query @ parameters
