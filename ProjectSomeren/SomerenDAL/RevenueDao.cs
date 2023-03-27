@@ -43,7 +43,7 @@ namespace SomerenDAL
     // All Sales
         public List<Sale> GetAllSales(string dateStart, string dateEnd)
         {
-            string query = "Select Distinct D.[name] AS Drink_Name, D.[price] AS Price, (select COUNT(*) " +
+            string query = "Select Distinct D.[name] AS Drink_Name, D.[price] AS Price, D.[is_alcoholic] AS Alcoholic, (select COUNT(*) " +
                                                                     "from dbo.orders AS O " +
                                                                     "WHERE O.[drink_ID]= D.[drink_ID] " +
                                                                     "AND O.[date] BETWEEN @startDate AND @endDate) AS Amount " +
@@ -69,6 +69,7 @@ namespace SomerenDAL
                 {
                     ID = count,
                     Name = dr["Drink_Name"].ToString(),
+                    IsAlcoholic = (bool)dr["Alcoholic"],
                     Price = (decimal)dr["Price"],
                     Amount = (int)dr["Amount"],
                 };
