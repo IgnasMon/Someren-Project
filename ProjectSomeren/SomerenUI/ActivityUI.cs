@@ -46,20 +46,18 @@ namespace SomerenUI
             // clear the listview before filling it
             listViewActivities.Clear();
 
-            listViewActivities.Columns.Add("Schedule_ID", 100);
-            listViewActivities.Columns.Add("Capacity Varchar", 160);
-            listViewActivities.Columns.Add("Lecturer_ID", 160);
-            listViewActivities.Columns.Add("Student_ID", 160);
-
+            listViewActivities.Columns.Add("Activity ID", 100);
+            listViewActivities.Columns.Add("Description", 160);
+            listViewActivities.Columns.Add("Start Date Time", 160);
+            listViewActivities.Columns.Add("End Date Time", 160);
 
             foreach (Activity activity in activities)
             {
-                ListViewItem lvi = new ListViewItem(activity.Schedule_ID.ToString());
-                lvi.Tag = activity; // link lecturer object to listview item
-                lvi.SubItems.Add(activity.Capacity.ToString());
-                lvi.SubItems.Add(activity.Lecturer_ID.ToString());
-                lvi.SubItems.Add(activity.Student_ID.ToString());
-
+                ListViewItem lvi = new ListViewItem(activity.Activity_ID.ToString());
+                lvi.Tag = activity; // link activity object to listview item
+                lvi.SubItems.Add(activity.Description.ToString());
+                lvi.SubItems.Add(activity.StartDateTime.ToString());
+                lvi.SubItems.Add(activity.EndDateTime.ToString());
 
                 listViewActivities.Items.Add(lvi);
             }

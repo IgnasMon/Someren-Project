@@ -27,17 +27,14 @@ namespace SomerenDAL
             {
                 Activity activity = new Activity()
                 {
-                    Schedule_ID = (int)dr["schedule_ID"],
-                    Capacity = dr["capacity"].ToString(),
-                    Lecturer_ID = (int) dr ["lecturer_ID"],
-                    Student_ID = (int)dr["student_ID"],
-                    
+                    Activity_ID = (int)dr["activity_ID"],
+                    Description = dr["description"].ToString(),
+                    StartDateTime = DateTime.Parse(dr["startDateTime"].ToString()),
+                    EndDateTime = DateTime.Parse(dr["endDateTime"].ToString()),
                 };
                 activities.Add(activity);
             }
             return activities;
         }
     }
-}          
-
-
+}

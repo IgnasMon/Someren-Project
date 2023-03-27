@@ -23,8 +23,4 @@ namespace SomerenService
             return activity;
         }
     }
-
 }
-
-
-    

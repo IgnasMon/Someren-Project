@@ -5,18 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SomerenModel
-{
-    
-    
+{    
         public class Activity 
         {
-            public int Schedule_ID { get; set; }     // database Primary Key
-            public string Capacity { get; set; }
-            public int Lecturer_ID{ get; set; }
-            public int Student_ID { get; set; }
-            
-
-        }
-        
-    
+            public int Activity_ID { get; set; }     // database Primary Key
+            public string Description { get; set; }
+            public DateTime StartDateTime{ get; set; }
+            public DateTime EndDateTime { get; set; }
+        }    
 }
