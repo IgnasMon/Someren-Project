@@ -29,7 +29,7 @@ namespace SomerenUI
             Application.Exit();
         }
 
-    // Students - Zoran
+        #region Zoran
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StudentUI studentUI = new StudentUI();
@@ -41,32 +41,42 @@ namespace SomerenUI
             DrinkUI drinkUI = new DrinkUI();
             drinkUI.ShowDialog();
         }
-        // Students - END
 
-        // Lecturers - Ignas
+        private void activityParticipantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActivityParticipantUI activityParticipantsUI = new ActivityParticipantUI();
+            activityParticipantsUI.ShowDialog();
+        }
+        #endregion Zoran
+
+        #region Ignas
         private void lecturersToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             LecturerUI lecturerUI = new LecturerUI();
             lecturerUI.ShowDialog();
         }
-    // Lecturer - END
-    // Revenue - Ignas
         private void revenueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RevenueUI RevenueUI = new RevenueUI();
             RevenueUI.ShowDialog();
         }
-    // Revenue - END
+        #endregion Ignas
 
-    // Rooms - Saif
+        #region Saif
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RoomsUI roomsUI = new RoomsUI(); 
             roomsUI.ShowDialog();
         }
-    // Rooms - END
 
-    // Activity - Sagy
+        private void vATToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VatUI VATUI = new VatUI();
+            VATUI.ShowDialog();
+        }
+        #endregion Saif
+
+        #region Sagy
         private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)   
         {
             ActivityUI ActivityUI = new ActivityUI();
@@ -79,12 +89,11 @@ namespace SomerenUI
             cashRegisterUI.ShowDialog();
         }
 
-        // Activity - END
-
-        private void vATToolStripMenuItem_Click(object sender, EventArgs e)
+        private void activitySupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VatUI VATUI = new VatUI();
-            VATUI.ShowDialog();
+            ActivitySupervisorUI ActivitySupervisorUI = new ActivitySupervisorUI();
+            ActivitySupervisorUI.ShowDialog();
         }
+        #endregion Sagy
     }
 }
