@@ -140,14 +140,5 @@ namespace SomerenDAL
             int totalCustomers = (int)dataTable.Rows[0]["Amount"];
             return totalCustomers;
         }
-
-        private void AssignSqlParameter(SqlParameter[] sqlParameters, int index, SqlDbType dataType, string parameterName, string parameterValue)
-        {
-            // Swaping query @ parameters
-            sqlParameters[index] = new SqlParameter();
-            sqlParameters[index].SqlDbType = dataType;
-            sqlParameters[index].ParameterName = parameterName;
-            sqlParameters[index].Value = parameterValue;
-        }
     }
 }
