@@ -19,8 +19,23 @@ namespace SomerenService
 
         public List<Activity> GetActivities()
         {
-            List<Activity> activity = activitydb.GetAllActivity();
+            List<Activity> activity = activitydb.GetAllActivities(); // Ignas - Changed calling method name from GetAllActivity -> GetAllActivities
             return activity;
+        }
+
+        public void AddNewActivity(Activity activity)
+        { 
+            activitydb.AddActivity(activity);
+        }
+
+        public void UpdateActivity(Activity activity)
+        {
+            activitydb.UpdateActivity(activity);
+        }
+
+        public void RemoveActivity(Activity activity)
+        {
+            activitydb.RemoveActivity(activity);
         }
     }
 }

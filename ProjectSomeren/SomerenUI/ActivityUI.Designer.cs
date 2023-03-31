@@ -29,123 +29,264 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActivityUI));
-            this.pnlActivities = new System.Windows.Forms.Panel();
-            this.pictureBoxActivities = new System.Windows.Forms.PictureBox();
-            this.listViewActivities = new System.Windows.Forms.ListView();
-            this.lblActivities = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dashboardToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlActivities.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActivities)).BeginInit();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            pnlActivities = new System.Windows.Forms.Panel();
+            pnlActivityCRUD = new System.Windows.Forms.Panel();
+            textBoxActivityCRUDDesc = new System.Windows.Forms.TextBox();
+            btnUpdate = new System.Windows.Forms.Button();
+            lblActivityCRUD = new System.Windows.Forms.Label();
+            btnDelete = new System.Windows.Forms.Button();
+            textBoxActivityCRUDID = new System.Windows.Forms.TextBox();
+            btnCreate = new System.Windows.Forms.Button();
+            lblActivityCRUDID = new System.Windows.Forms.Label();
+            lblActivityCRUDEnd = new System.Windows.Forms.Label();
+            lblActivityCRUDDesc = new System.Windows.Forms.Label();
+            dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+            lblActivityCRUDStart = new System.Windows.Forms.Label();
+            dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
+            pictureBoxActivities = new System.Windows.Forms.PictureBox();
+            listViewActivities = new System.Windows.Forms.ListView();
+            lblActivities = new System.Windows.Forms.Label();
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            dashboardToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            pnlActivities.SuspendLayout();
+            pnlActivityCRUD.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxActivities).BeginInit();
+            menuStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // pnlActivities
             // 
-            this.pnlActivities.Controls.Add(this.pictureBoxActivities);
-            this.pnlActivities.Controls.Add(this.listViewActivities);
-            this.pnlActivities.Controls.Add(this.lblActivities);
-            this.pnlActivities.Location = new System.Drawing.Point(13, 59);
-            this.pnlActivities.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlActivities.Name = "pnlActivities";
-            this.pnlActivities.Size = new System.Drawing.Size(1340, 776);
-            this.pnlActivities.TabIndex = 5;
+            pnlActivities.Controls.Add(pnlActivityCRUD);
+            pnlActivities.Controls.Add(pictureBoxActivities);
+            pnlActivities.Controls.Add(listViewActivities);
+            pnlActivities.Controls.Add(lblActivities);
+            pnlActivities.Location = new System.Drawing.Point(10, 47);
+            pnlActivities.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            pnlActivities.Name = "pnlActivities";
+            pnlActivities.Size = new System.Drawing.Size(1072, 621);
+            pnlActivities.TabIndex = 5;
+            // 
+            // pnlActivityCRUD
+            // 
+            pnlActivityCRUD.Controls.Add(textBoxActivityCRUDDesc);
+            pnlActivityCRUD.Controls.Add(btnUpdate);
+            pnlActivityCRUD.Controls.Add(lblActivityCRUD);
+            pnlActivityCRUD.Controls.Add(btnDelete);
+            pnlActivityCRUD.Controls.Add(textBoxActivityCRUDID);
+            pnlActivityCRUD.Controls.Add(btnCreate);
+            pnlActivityCRUD.Controls.Add(lblActivityCRUDID);
+            pnlActivityCRUD.Controls.Add(lblActivityCRUDEnd);
+            pnlActivityCRUD.Controls.Add(lblActivityCRUDDesc);
+            pnlActivityCRUD.Controls.Add(dateTimePickerEnd);
+            pnlActivityCRUD.Controls.Add(lblActivityCRUDStart);
+            pnlActivityCRUD.Controls.Add(dateTimePickerStart);
+            pnlActivityCRUD.Location = new System.Drawing.Point(573, 46);
+            pnlActivityCRUD.Name = "pnlActivityCRUD";
+            pnlActivityCRUD.Size = new System.Drawing.Size(465, 453);
+            pnlActivityCRUD.TabIndex = 17;
+            // 
+            // textBoxActivityCRUDDesc
+            // 
+            textBoxActivityCRUDDesc.Location = new System.Drawing.Point(136, 139);
+            textBoxActivityCRUDDesc.Multiline = true;
+            textBoxActivityCRUDDesc.Name = "textBoxActivityCRUDDesc";
+            textBoxActivityCRUDDesc.Size = new System.Drawing.Size(292, 158);
+            textBoxActivityCRUDDesc.TabIndex = 5;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.Location = new System.Drawing.Point(184, 409);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new System.Drawing.Size(94, 29);
+            btnUpdate.TabIndex = 16;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
+            // lblActivityCRUD
+            // 
+            lblActivityCRUD.AutoSize = true;
+            lblActivityCRUD.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblActivityCRUD.Location = new System.Drawing.Point(35, 30);
+            lblActivityCRUD.Name = "lblActivityCRUD";
+            lblActivityCRUD.Size = new System.Drawing.Size(201, 41);
+            lblActivityCRUD.TabIndex = 3;
+            lblActivityCRUD.Text = "Activity CRUD";
+            // 
+            // btnDelete
+            // 
+            btnDelete.Location = new System.Drawing.Point(334, 409);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new System.Drawing.Size(94, 29);
+            btnDelete.TabIndex = 15;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // textBoxActivityCRUDID
+            // 
+            textBoxActivityCRUDID.Enabled = false;
+            textBoxActivityCRUDID.Location = new System.Drawing.Point(136, 93);
+            textBoxActivityCRUDID.Name = "textBoxActivityCRUDID";
+            textBoxActivityCRUDID.ReadOnly = true;
+            textBoxActivityCRUDID.Size = new System.Drawing.Size(67, 27);
+            textBoxActivityCRUDID.TabIndex = 4;
+            // 
+            // btnCreate
+            // 
+            btnCreate.Location = new System.Drawing.Point(35, 409);
+            btnCreate.Name = "btnCreate";
+            btnCreate.Size = new System.Drawing.Size(94, 29);
+            btnCreate.TabIndex = 14;
+            btnCreate.Text = "Create";
+            btnCreate.UseVisualStyleBackColor = true;
+            btnCreate.Click += btnCreate_Click;
+            // 
+            // lblActivityCRUDID
+            // 
+            lblActivityCRUDID.AutoSize = true;
+            lblActivityCRUDID.Location = new System.Drawing.Point(35, 96);
+            lblActivityCRUDID.Name = "lblActivityCRUDID";
+            lblActivityCRUDID.Size = new System.Drawing.Size(27, 20);
+            lblActivityCRUDID.TabIndex = 8;
+            lblActivityCRUDID.Text = "ID:";
+            // 
+            // lblActivityCRUDEnd
+            // 
+            lblActivityCRUDEnd.AutoSize = true;
+            lblActivityCRUDEnd.Location = new System.Drawing.Point(35, 365);
+            lblActivityCRUDEnd.Name = "lblActivityCRUDEnd";
+            lblActivityCRUDEnd.Size = new System.Drawing.Size(73, 20);
+            lblActivityCRUDEnd.TabIndex = 13;
+            lblActivityCRUDEnd.Text = "End Date:";
+            // 
+            // lblActivityCRUDDesc
+            // 
+            lblActivityCRUDDesc.AutoSize = true;
+            lblActivityCRUDDesc.Location = new System.Drawing.Point(35, 142);
+            lblActivityCRUDDesc.Name = "lblActivityCRUDDesc";
+            lblActivityCRUDDesc.Size = new System.Drawing.Size(88, 20);
+            lblActivityCRUDDesc.TabIndex = 9;
+            lblActivityCRUDDesc.Text = "Description:";
+            // 
+            // dateTimePickerEnd
+            // 
+            dateTimePickerEnd.Location = new System.Drawing.Point(136, 360);
+            dateTimePickerEnd.Name = "dateTimePickerEnd";
+            dateTimePickerEnd.Size = new System.Drawing.Size(292, 27);
+            dateTimePickerEnd.TabIndex = 12;
+            // 
+            // lblActivityCRUDStart
+            // 
+            lblActivityCRUDStart.AutoSize = true;
+            lblActivityCRUDStart.Location = new System.Drawing.Point(35, 323);
+            lblActivityCRUDStart.Name = "lblActivityCRUDStart";
+            lblActivityCRUDStart.Size = new System.Drawing.Size(79, 20);
+            lblActivityCRUDStart.TabIndex = 10;
+            lblActivityCRUDStart.Text = "Start Date:";
+            // 
+            // dateTimePickerStart
+            // 
+            dateTimePickerStart.Location = new System.Drawing.Point(136, 318);
+            dateTimePickerStart.Name = "dateTimePickerStart";
+            dateTimePickerStart.Size = new System.Drawing.Size(292, 27);
+            dateTimePickerStart.TabIndex = 11;
             // 
             // pictureBoxActivities
             // 
-            this.pictureBoxActivities.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxActivities.Image")));
-            this.pictureBoxActivities.Location = new System.Drawing.Point(1150, 0);
-            this.pictureBoxActivities.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBoxActivities.Name = "pictureBoxActivities";
-            this.pictureBoxActivities.Size = new System.Drawing.Size(186, 205);
-            this.pictureBoxActivities.TabIndex = 2;
-            this.pictureBoxActivities.TabStop = false;
+            pictureBoxActivities.Image = (System.Drawing.Image)resources.GetObject("pictureBoxActivities.Image");
+            pictureBoxActivities.Location = new System.Drawing.Point(923, 0);
+            pictureBoxActivities.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            pictureBoxActivities.Name = "pictureBoxActivities";
+            pictureBoxActivities.Size = new System.Drawing.Size(149, 164);
+            pictureBoxActivities.TabIndex = 2;
+            pictureBoxActivities.TabStop = false;
             // 
             // listViewActivities
             // 
-            this.listViewActivities.Location = new System.Drawing.Point(22, 70);
-            this.listViewActivities.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.listViewActivities.Name = "listViewActivities";
-            this.listViewActivities.Size = new System.Drawing.Size(1093, 509);
-            this.listViewActivities.TabIndex = 1;
-            this.listViewActivities.UseCompatibleStateImageBehavior = false;
-            this.listViewActivities.View = System.Windows.Forms.View.Details;
+            listViewActivities.FullRowSelect = true;
+            listViewActivities.Location = new System.Drawing.Point(18, 56);
+            listViewActivities.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            listViewActivities.MultiSelect = false;
+            listViewActivities.Name = "listViewActivities";
+            listViewActivities.Size = new System.Drawing.Size(538, 408);
+            listViewActivities.TabIndex = 1;
+            listViewActivities.UseCompatibleStateImageBehavior = false;
+            listViewActivities.View = System.Windows.Forms.View.Details;
+            listViewActivities.SelectedIndexChanged += listViewActivities_SelectedIndexChanged;
             // 
             // lblActivities
             // 
-            this.lblActivities.AutoSize = true;
-            this.lblActivities.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblActivities.Location = new System.Drawing.Point(19, 11);
-            this.lblActivities.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblActivities.Name = "lblActivities";
-            this.lblActivities.Size = new System.Drawing.Size(162, 48);
-            this.lblActivities.TabIndex = 0;
-            this.lblActivities.Text = "Activities";
+            lblActivities.AutoSize = true;
+            lblActivities.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblActivities.Location = new System.Drawing.Point(15, 9);
+            lblActivities.Name = "lblActivities";
+            lblActivities.Size = new System.Drawing.Size(135, 41);
+            lblActivities.TabIndex = 0;
+            lblActivities.Text = "Activities";
             // 
             // menuStrip1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.applicationToolStripMenuItem,
-            this.refreshToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1470, 33);
-            this.menuStrip1.TabIndex = 8;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { applicationToolStripMenuItem, refreshToolStripMenuItem });
+            menuStrip1.Location = new System.Drawing.Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new System.Drawing.Size(1176, 28);
+            menuStrip1.TabIndex = 8;
+            menuStrip1.Text = "menuStrip1";
             // 
             // applicationToolStripMenuItem
             // 
-            this.applicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dashboardToolStripMenuItem1,
-            this.closeToolStripMenuItem});
-            this.applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
-            this.applicationToolStripMenuItem.Size = new System.Drawing.Size(118, 29);
-            this.applicationToolStripMenuItem.Text = "Application";
+            applicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { dashboardToolStripMenuItem1, closeToolStripMenuItem });
+            applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
+            applicationToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
+            applicationToolStripMenuItem.Text = "Application";
             // 
             // dashboardToolStripMenuItem1
             // 
-            this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(202, 34);
-            this.dashboardToolStripMenuItem1.Text = "Dashboard";
+            dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
+            dashboardToolStripMenuItem1.Size = new System.Drawing.Size(165, 26);
+            dashboardToolStripMenuItem1.Text = "Dashboard";
             // 
             // closeToolStripMenuItem
             // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(202, 34);
-            this.closeToolStripMenuItem.Text = "Close";
+            closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            closeToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            closeToolStripMenuItem.Text = "Close";
             // 
             // refreshToolStripMenuItem
             // 
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(86, 29);
-            this.refreshToolStripMenuItem.Text = "Refresh";
+            refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            refreshToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            refreshToolStripMenuItem.Text = "Refresh";
+            refreshToolStripMenuItem.Click += refreshToolStripMenuItem_Click;
             // 
             // ActivityUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1470, 904);
-            this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.pnlActivities);
-            this.Name = "ActivityUI";
-            this.Text = "ActivityUI";
-            this.pnlActivities.ResumeLayout(false);
-            this.pnlActivities.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActivities)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1176, 723);
+            Controls.Add(menuStrip1);
+            Controls.Add(pnlActivities);
+            Margin = new System.Windows.Forms.Padding(2);
+            Name = "ActivityUI";
+            Text = "ActivityUI";
+            pnlActivities.ResumeLayout(false);
+            pnlActivities.PerformLayout();
+            pnlActivityCRUD.ResumeLayout(false);
+            pnlActivityCRUD.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxActivities).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
+        // Activity - Sagy
         private System.Windows.Forms.Panel pnlActivities;
         private System.Windows.Forms.PictureBox pictureBoxActivities;
         private System.Windows.Forms.ListView listViewActivities;
@@ -155,5 +296,22 @@
         private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        // Activity END - END
+
+        // ActivityCRUD - Ignas - Assignment 4
+        private System.Windows.Forms.Label lblActivityCRUD;
+        private System.Windows.Forms.Label lblActivityCRUDID;
+        private System.Windows.Forms.TextBox textBoxActivityCRUDDesc;
+        private System.Windows.Forms.TextBox textBoxActivityCRUDID;
+        private System.Windows.Forms.Label lblActivityCRUDEnd;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStart;
+        private System.Windows.Forms.Label lblActivityCRUDStart;
+        private System.Windows.Forms.Label lblActivityCRUDDesc;
+        private System.Windows.Forms.Panel pnlActivityCRUD;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnCreate;
+        // ActivityCRUD - END
     }
 }

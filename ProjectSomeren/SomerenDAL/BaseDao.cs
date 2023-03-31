@@ -120,5 +120,25 @@ namespace SomerenDAL
 
             return dataTable;
         }
+
+    // Ignas - Parameter Control for query
+        protected void AssignSqlParameter(SqlParameter[] sqlParameters, int index, SqlDbType dataType, string parameterName, string parameterValue)
+        {
+            // Swaping query @ parameters
+            sqlParameters[index] = new SqlParameter();
+            sqlParameters[index].SqlDbType = dataType;
+            sqlParameters[index].ParameterName = parameterName;
+            sqlParameters[index].Value = parameterValue;
+        }
+
+        protected void AssignSqlParameter(SqlParameter[] sqlParameters, int index, SqlDbType dataType, string parameterName, int parameterValue)
+        {
+            // Swaping query @ parameters
+            sqlParameters[index] = new SqlParameter();
+            sqlParameters[index].SqlDbType = dataType;
+            sqlParameters[index].ParameterName = parameterName;
+            sqlParameters[index].Value = parameterValue;
+        }
+        // Ignas Parameter - END
     }
 }
