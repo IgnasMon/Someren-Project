@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActivityUI));
             pnlActivities = new System.Windows.Forms.Panel();
             pnlActivityCRUD = new System.Windows.Forms.Panel();
+            btnClearCRUD = new System.Windows.Forms.Button();
             textBoxActivityCRUDDesc = new System.Windows.Forms.TextBox();
             btnUpdate = new System.Windows.Forms.Button();
             lblActivityCRUD = new System.Windows.Forms.Label();
@@ -66,11 +67,12 @@
             pnlActivities.Location = new System.Drawing.Point(10, 47);
             pnlActivities.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             pnlActivities.Name = "pnlActivities";
-            pnlActivities.Size = new System.Drawing.Size(1072, 621);
+            pnlActivities.Size = new System.Drawing.Size(1202, 484);
             pnlActivities.TabIndex = 5;
             // 
             // pnlActivityCRUD
             // 
+            pnlActivityCRUD.Controls.Add(btnClearCRUD);
             pnlActivityCRUD.Controls.Add(textBoxActivityCRUDDesc);
             pnlActivityCRUD.Controls.Add(btnUpdate);
             pnlActivityCRUD.Controls.Add(lblActivityCRUD);
@@ -83,22 +85,32 @@
             pnlActivityCRUD.Controls.Add(dateTimePickerEnd);
             pnlActivityCRUD.Controls.Add(lblActivityCRUDStart);
             pnlActivityCRUD.Controls.Add(dateTimePickerStart);
-            pnlActivityCRUD.Location = new System.Drawing.Point(573, 46);
+            pnlActivityCRUD.Location = new System.Drawing.Point(573, 56);
             pnlActivityCRUD.Name = "pnlActivityCRUD";
-            pnlActivityCRUD.Size = new System.Drawing.Size(465, 453);
+            pnlActivityCRUD.Size = new System.Drawing.Size(471, 408);
             pnlActivityCRUD.TabIndex = 17;
+            // 
+            // btnClearCRUD
+            // 
+            btnClearCRUD.Location = new System.Drawing.Point(334, 65);
+            btnClearCRUD.Name = "btnClearCRUD";
+            btnClearCRUD.Size = new System.Drawing.Size(94, 29);
+            btnClearCRUD.TabIndex = 17;
+            btnClearCRUD.Text = "Clear Fields";
+            btnClearCRUD.UseVisualStyleBackColor = true;
+            btnClearCRUD.Click += btnClearCRUD_Click;
             // 
             // textBoxActivityCRUDDesc
             // 
-            textBoxActivityCRUDDesc.Location = new System.Drawing.Point(136, 139);
+            textBoxActivityCRUDDesc.Location = new System.Drawing.Point(136, 115);
             textBoxActivityCRUDDesc.Multiline = true;
             textBoxActivityCRUDDesc.Name = "textBoxActivityCRUDDesc";
-            textBoxActivityCRUDDesc.Size = new System.Drawing.Size(292, 158);
+            textBoxActivityCRUDDesc.Size = new System.Drawing.Size(292, 138);
             textBoxActivityCRUDDesc.TabIndex = 5;
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new System.Drawing.Point(184, 409);
+            btnUpdate.Location = new System.Drawing.Point(184, 363);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new System.Drawing.Size(94, 29);
             btnUpdate.TabIndex = 16;
@@ -110,7 +122,7 @@
             // 
             lblActivityCRUD.AutoSize = true;
             lblActivityCRUD.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lblActivityCRUD.Location = new System.Drawing.Point(35, 30);
+            lblActivityCRUD.Location = new System.Drawing.Point(35, 11);
             lblActivityCRUD.Name = "lblActivityCRUD";
             lblActivityCRUD.Size = new System.Drawing.Size(201, 41);
             lblActivityCRUD.TabIndex = 3;
@@ -118,7 +130,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new System.Drawing.Point(334, 409);
+            btnDelete.Location = new System.Drawing.Point(334, 363);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new System.Drawing.Size(94, 29);
             btnDelete.TabIndex = 15;
@@ -129,7 +141,7 @@
             // textBoxActivityCRUDID
             // 
             textBoxActivityCRUDID.Enabled = false;
-            textBoxActivityCRUDID.Location = new System.Drawing.Point(136, 93);
+            textBoxActivityCRUDID.Location = new System.Drawing.Point(136, 66);
             textBoxActivityCRUDID.Name = "textBoxActivityCRUDID";
             textBoxActivityCRUDID.ReadOnly = true;
             textBoxActivityCRUDID.Size = new System.Drawing.Size(67, 27);
@@ -137,7 +149,7 @@
             // 
             // btnCreate
             // 
-            btnCreate.Location = new System.Drawing.Point(35, 409);
+            btnCreate.Location = new System.Drawing.Point(35, 363);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new System.Drawing.Size(94, 29);
             btnCreate.TabIndex = 14;
@@ -148,7 +160,7 @@
             // lblActivityCRUDID
             // 
             lblActivityCRUDID.AutoSize = true;
-            lblActivityCRUDID.Location = new System.Drawing.Point(35, 96);
+            lblActivityCRUDID.Location = new System.Drawing.Point(35, 69);
             lblActivityCRUDID.Name = "lblActivityCRUDID";
             lblActivityCRUDID.Size = new System.Drawing.Size(27, 20);
             lblActivityCRUDID.TabIndex = 8;
@@ -157,7 +169,7 @@
             // lblActivityCRUDEnd
             // 
             lblActivityCRUDEnd.AutoSize = true;
-            lblActivityCRUDEnd.Location = new System.Drawing.Point(35, 365);
+            lblActivityCRUDEnd.Location = new System.Drawing.Point(35, 322);
             lblActivityCRUDEnd.Name = "lblActivityCRUDEnd";
             lblActivityCRUDEnd.Size = new System.Drawing.Size(73, 20);
             lblActivityCRUDEnd.TabIndex = 13;
@@ -166,7 +178,7 @@
             // lblActivityCRUDDesc
             // 
             lblActivityCRUDDesc.AutoSize = true;
-            lblActivityCRUDDesc.Location = new System.Drawing.Point(35, 142);
+            lblActivityCRUDDesc.Location = new System.Drawing.Point(35, 115);
             lblActivityCRUDDesc.Name = "lblActivityCRUDDesc";
             lblActivityCRUDDesc.Size = new System.Drawing.Size(88, 20);
             lblActivityCRUDDesc.TabIndex = 9;
@@ -174,7 +186,7 @@
             // 
             // dateTimePickerEnd
             // 
-            dateTimePickerEnd.Location = new System.Drawing.Point(136, 360);
+            dateTimePickerEnd.Location = new System.Drawing.Point(136, 317);
             dateTimePickerEnd.Name = "dateTimePickerEnd";
             dateTimePickerEnd.Size = new System.Drawing.Size(292, 27);
             dateTimePickerEnd.TabIndex = 12;
@@ -182,7 +194,7 @@
             // lblActivityCRUDStart
             // 
             lblActivityCRUDStart.AutoSize = true;
-            lblActivityCRUDStart.Location = new System.Drawing.Point(35, 323);
+            lblActivityCRUDStart.Location = new System.Drawing.Point(35, 280);
             lblActivityCRUDStart.Name = "lblActivityCRUDStart";
             lblActivityCRUDStart.Size = new System.Drawing.Size(79, 20);
             lblActivityCRUDStart.TabIndex = 10;
@@ -190,7 +202,7 @@
             // 
             // dateTimePickerStart
             // 
-            dateTimePickerStart.Location = new System.Drawing.Point(136, 318);
+            dateTimePickerStart.Location = new System.Drawing.Point(136, 275);
             dateTimePickerStart.Name = "dateTimePickerStart";
             dateTimePickerStart.Size = new System.Drawing.Size(292, 27);
             dateTimePickerStart.TabIndex = 11;
@@ -198,7 +210,7 @@
             // pictureBoxActivities
             // 
             pictureBoxActivities.Image = (System.Drawing.Image)resources.GetObject("pictureBoxActivities.Image");
-            pictureBoxActivities.Location = new System.Drawing.Point(923, 0);
+            pictureBoxActivities.Location = new System.Drawing.Point(1050, 3);
             pictureBoxActivities.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             pictureBoxActivities.Name = "pictureBoxActivities";
             pictureBoxActivities.Size = new System.Drawing.Size(149, 164);
@@ -234,7 +246,7 @@
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { applicationToolStripMenuItem, refreshToolStripMenuItem });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new System.Drawing.Size(1176, 28);
+            menuStrip1.Size = new System.Drawing.Size(1222, 28);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -248,13 +260,13 @@
             // dashboardToolStripMenuItem1
             // 
             dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            dashboardToolStripMenuItem1.Size = new System.Drawing.Size(165, 26);
+            dashboardToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             dashboardToolStripMenuItem1.Text = "Dashboard";
             // 
             // closeToolStripMenuItem
             // 
             closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             closeToolStripMenuItem.Text = "Close";
             // 
             // refreshToolStripMenuItem
@@ -268,7 +280,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1176, 723);
+            ClientSize = new System.Drawing.Size(1222, 554);
             Controls.Add(menuStrip1);
             Controls.Add(pnlActivities);
             Margin = new System.Windows.Forms.Padding(2);
@@ -302,7 +314,6 @@
         private System.Windows.Forms.Label lblActivityCRUD;
         private System.Windows.Forms.Label lblActivityCRUDID;
         private System.Windows.Forms.TextBox textBoxActivityCRUDDesc;
-        private System.Windows.Forms.TextBox textBoxActivityCRUDID;
         private System.Windows.Forms.Label lblActivityCRUDEnd;
         private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
         private System.Windows.Forms.DateTimePicker dateTimePickerStart;
@@ -312,6 +323,8 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button btnClearCRUD;
+        private System.Windows.Forms.TextBox textBoxActivityCRUDID;
         // ActivityCRUD - END
     }
 }
